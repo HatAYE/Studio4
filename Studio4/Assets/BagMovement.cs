@@ -8,20 +8,9 @@ public class BagMovement : MonoBehaviour
     [SerializeField] List<GameObject> bagPositions;
     [SerializeField] int speed;
     [SerializeField] GameObject rejectButton;
-    int currentPositionIndex;
+    [HideInInspector] public int currentPositionIndex;
     Coroutine movementCoroutine;
     bool isMoving;
-    
-    void Start()
-    {
-
-    }
-
-    // 1- iterate loop when button is clicked them make bag move to the position
-    void Update()
-    {
-
-    }
 
     private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float moveSpeed)
     {
@@ -40,9 +29,6 @@ public class BagMovement : MonoBehaviour
     }
     public void MoveToPosition()
     {
-            /*Vector3 positionDirection = bagPositions[i].transform.position - gameObject.transform.position;
-            if (gameObject.transform.position != bagPositions[i].transform.position)
-                transform.position += positionDirection * speed * Time.deltaTime;*/
             if (!isMoving)
             {
                 if (movementCoroutine != null)
@@ -53,12 +39,8 @@ public class BagMovement : MonoBehaviour
             }
         if (currentPositionIndex < bagPositions.Count)
         {
-            StartMovement();
+            Vector3 targetPosition = bagPositions[currentPositionIndex].transform.position;
+            movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
         }
-    }
-    private void StartMovement()
-    {
-        Vector3 targetPosition = bagPositions[currentPositionIndex].transform.position;
-        movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
     }
 }
