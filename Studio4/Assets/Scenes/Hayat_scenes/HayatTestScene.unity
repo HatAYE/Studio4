@@ -331,8 +331,6 @@ MonoBehaviour:
   - {fileID: 6640435848388865551, guid: d35b9de1409acba409d63acc2d5ec8cc, type: 3}
   - {fileID: 8578628469891191181, guid: 48094d9854d04034c85cdbc17f68619c, type: 3}
   - {fileID: 6633459780243167177, guid: 17ec73a51b551204b9dac588e74fcd97, type: 3}
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &297431439
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,8 +406,6 @@ MonoBehaviour:
   - {fileID: 6640435848388865551, guid: d35b9de1409acba409d63acc2d5ec8cc, type: 3}
   - {fileID: 8578628469891191181, guid: 48094d9854d04034c85cdbc17f68619c, type: 3}
   - {fileID: 6633459780243167177, guid: 17ec73a51b551204b9dac588e74fcd97, type: 3}
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &436382979
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,8 +481,6 @@ MonoBehaviour:
   - {fileID: 6640435848388865551, guid: d35b9de1409acba409d63acc2d5ec8cc, type: 3}
   - {fileID: 8578628469891191181, guid: 48094d9854d04034c85cdbc17f68619c, type: 3}
   - {fileID: 6633459780243167177, guid: 17ec73a51b551204b9dac588e74fcd97, type: 3}
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &572265557
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &572265558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -690,7 +684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 938370793}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1786938324}
+        m_TargetAssemblyTypeName: BagMovement, Assembly-CSharp
+        m_MethodName: MoveToLastPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &938370793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,8 +810,6 @@ MonoBehaviour:
   - {fileID: 6640435848388865551, guid: d35b9de1409acba409d63acc2d5ec8cc, type: 3}
   - {fileID: 8578628469891191181, guid: 48094d9854d04034c85cdbc17f68619c, type: 3}
   - {fileID: 6633459780243167177, guid: 17ec73a51b551204b9dac588e74fcd97, type: 3}
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1097791019
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,8 +885,6 @@ MonoBehaviour:
   - {fileID: 6640435848388865551, guid: d35b9de1409acba409d63acc2d5ec8cc, type: 3}
   - {fileID: 8578628469891191181, guid: 48094d9854d04034c85cdbc17f68619c, type: 3}
   - {fileID: 6633459780243167177, guid: 17ec73a51b551204b9dac588e74fcd97, type: 3}
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1137294655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,8 +1044,6 @@ MonoBehaviour:
   - {fileID: 6640435848388865551, guid: d35b9de1409acba409d63acc2d5ec8cc, type: 3}
   - {fileID: 8578628469891191181, guid: 48094d9854d04034c85cdbc17f68619c, type: 3}
   - {fileID: 6633459780243167177, guid: 17ec73a51b551204b9dac588e74fcd97, type: 3}
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1322369858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1411,8 @@ MonoBehaviour:
   speed: 10
   rejectButton: {fileID: 186112994}
   currentPositionIndex: 0
+  isMoving: 0
+  initialMove: 1
 --- !u!114 &1786938325
 MonoBehaviour:
   m_ObjectHideFlags: 0

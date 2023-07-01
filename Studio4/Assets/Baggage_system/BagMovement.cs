@@ -10,10 +10,22 @@ public class BagMovement : MonoBehaviour
     [SerializeField] GameObject rejectButton;
     [HideInInspector] public int currentPositionIndex;
     Coroutine movementCoroutine;
-    bool isMoving;
+    [SerializeField] bool isMoving;
+    [SerializeField] bool initialMove=true;
 
+    private void Update()
+    {
+        if (currentPositionIndex < bagPositions.Count && initialMove && currentPositionIndex == 0)
+        {
+            initialMove = false;
+            MoveToPosition();
+        }
+        else if (currentPositionIndex>0)
+            initialMove = true;
+    }
     private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float moveSpeed)
     {
+        ///this coroutine is responsible for moving the object and deactiving the buttons. it takes a position and speed.
         isMoving = true;
         while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
         {
@@ -24,12 +36,10 @@ public class BagMovement : MonoBehaviour
         rejectButton.SetActive(true);
         isMoving = false;
         currentPositionIndex++;
-
-
     }
     public void MoveToPosition()
     {
-            if (!isMoving)
+            if (!isMoving && currentPositionIndex < bagPositions.Count - 1)
             {
                 if (movementCoroutine != null)
                 {
@@ -43,4 +53,20 @@ public class BagMovement : MonoBehaviour
             movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
         }
     }
+
+    public void MoveToLastPosition()
+    {
+        if (!isMoving && currentPositionIndex < 3)
+        {
+            if (movementCoroutine != null)
+            {
+                // Stop the previous coroutine if it was running
+                StopCoroutine(movementCoroutine);
+            }
+            Vector3 targetPosition = bagPositions[bagPositions.Count - 1].transform.position;
+            currentPositionIndex = bagPositions.Count - 1;
+            movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
+        }
+    }
 }
+    
