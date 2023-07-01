@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8740988427995148754}
   - component: {fileID: 4340789672397408299}
   - component: {fileID: 1723923059365759975}
+  - component: {fileID: 6740659671518272736}
   m_Layer: 0
   m_Name: capsule
   m_TagString: Untagged
@@ -99,3 +100,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dangerValue: 0
   dangerPoints: 100
+  illegalItem: 0
+--- !u!70 &6740659671518272736
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640435848388865551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
