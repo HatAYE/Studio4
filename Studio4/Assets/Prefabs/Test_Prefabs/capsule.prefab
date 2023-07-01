@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8740988427995148754}
   - component: {fileID: 4340789672397408299}
+  - component: {fileID: 1723923059365759975}
   m_Layer: 0
   m_Name: capsule
   m_TagString: Untagged
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1723923059365759975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640435848388865551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a684477dfc4b3241bbab3910a305da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dangerValue: 0
+  dangerPoints: 100

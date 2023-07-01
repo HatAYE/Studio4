@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BagReset : MonoBehaviour
 {
-    [SerializeField] List <ObjectRandomizer> objectRandomizer;
+    public List <ObjectRandomizer> objectRandomizer;
     [SerializeField] GameObject resetPoint;
     [SerializeField] GameObject startPoint;
     BagMovement bagMovement;
@@ -17,15 +17,19 @@ public class BagReset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("position index:" + bagMovement.currentPositionIndex);
+        //Debug.Log("position index:" + bagMovement.currentPositionIndex);
         
-        if (bagMovement.currentPositionIndex >=3)
+        StartCoroutine(ActivateReset());
+    }
+    IEnumerator ActivateReset() 
+    {
+        if (bagMovement.currentPositionIndex >= 3)
         {
+        yield return new WaitForSeconds(1);
             resetPoint.SetActive(true);
         }
         else resetPoint.SetActive(false);
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Respawn")

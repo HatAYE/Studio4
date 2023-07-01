@@ -8,10 +8,11 @@ public class BagMovement : MonoBehaviour
     [SerializeField] List<GameObject> bagPositions;
     [SerializeField] int speed;
     [SerializeField] GameObject rejectButton;
-    [HideInInspector] public int currentPositionIndex;
+    [SerializeField] PointSystem pointSystem;
+    public int currentPositionIndex;
     Coroutine movementCoroutine;
-    [SerializeField] bool isMoving;
-    [SerializeField] bool initialMove=true;
+    bool isMoving;
+    bool initialMove=true;
 
     private void Update()
     {
@@ -36,6 +37,7 @@ public class BagMovement : MonoBehaviour
         rejectButton.SetActive(true);
         isMoving = false;
         currentPositionIndex++;
+        pointSystem.ItemCheck();
     }
     public void MoveToPosition()
     {
