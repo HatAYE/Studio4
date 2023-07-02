@@ -45,9 +45,12 @@ public class BagReset : MonoBehaviour
     {
         for (int i =0; i<objectRandomizer.Count; i++)
         {
-            Transform child = parent.GetChild(i);
-            Transform secondChild = child.GetChild(0);
-            Destroy(secondChild.gameObject); // Destroy the child GameObject
+            Transform bagObject = objectRandomizer[i].transform;
+            if (bagObject.childCount > 0)
+            {
+                Transform child = parent.transform.GetChild(i).GetChild(0);
+                Destroy(child.gameObject); // Destroy the child GameObject
+            }
         }
     }
 }
