@@ -14,6 +14,7 @@ public class BagMovement : MonoBehaviour
     Coroutine movementCoroutine;
     bool isMoving;
     bool initialMove=true;
+    public bool rejecting;
 
     private void Update()
     {
@@ -41,22 +42,25 @@ public class BagMovement : MonoBehaviour
         isMoving = false;
         currentPositionIndex++;
         pointSystem.ItemCheck();
+        rejecting = false;
     }
     public void MoveToPosition()
     {
-            if (!isMoving && currentPositionIndex < bagPositions.Count - 1)
+        if (!isMoving && currentPositionIndex < bagPositions.Count - 1)
+        {
+            if (movementCoroutine != null)
             {
-                if (movementCoroutine != null)
-                {
-                    // Stop the previous coroutine if it was running
-                    StopCoroutine(movementCoroutine);
-                }
+                // Stop the previous coroutine if it was running
+                StopCoroutine(movementCoroutine);
             }
+        }
         if (currentPositionIndex < bagPositions.Count)
         {
             Vector3 targetPosition = bagPositions[currentPositionIndex].transform.position;
+            rejecting = true;
             movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
         }
+        
     }
 
     public void MoveToLastPosition()
