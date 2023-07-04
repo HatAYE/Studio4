@@ -643,10 +643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6dd2ccb62e2d48ac5a6511943625a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePoints: 0
   bagReset: {fileID: 1786938325}
   bagMovement: {fileID: 1786938324}
-  itemPointValue: 0
   scoreText: {fileID: 1276292690}
 --- !u!4 &661111009
 Transform:
@@ -1607,6 +1605,7 @@ MonoBehaviour:
   - {fileID: 1568687474}
   speed: 10
   rejectButton: {fileID: 186112994}
+  acceptButton: {fileID: 938370790}
   pointSystem: {fileID: 661111008}
   currentPositionIndex: 0
 --- !u!114 &1786938325

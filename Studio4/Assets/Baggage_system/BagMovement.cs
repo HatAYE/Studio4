@@ -8,6 +8,7 @@ public class BagMovement : MonoBehaviour
     [SerializeField] List<GameObject> bagPositions;
     [SerializeField] int speed;
     [SerializeField] GameObject rejectButton;
+    [SerializeField] GameObject acceptButton;
     [SerializeField] PointSystem pointSystem;
     public int currentPositionIndex;
     Coroutine movementCoroutine;
@@ -32,9 +33,11 @@ public class BagMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             rejectButton.SetActive(false);
+            acceptButton.SetActive(false);
             yield return null;
         }
         rejectButton.SetActive(true);
+        acceptButton.SetActive(true);
         isMoving = false;
         currentPositionIndex++;
         pointSystem.ItemCheck();
@@ -68,6 +71,7 @@ public class BagMovement : MonoBehaviour
             Vector3 targetPosition = bagPositions[bagPositions.Count - 1].transform.position;
             currentPositionIndex = bagPositions.Count - 1;
             movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
+            //pointSystem.FalseItemCheck();
         }
     }
 }
