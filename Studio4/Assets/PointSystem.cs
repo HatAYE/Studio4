@@ -74,7 +74,7 @@ public class PointSystem : MonoBehaviour
 
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Items"));
-        if (hit.collider != null && bagMovement.currentPositionIndex==2)
+        if (hit.collider != null && bagMovement.currentPositionIndex== bagMovement.bagPositions.Count-1)
         {
             if (hit.collider.gameObject.GetComponent<ItemType>() != null)
             {

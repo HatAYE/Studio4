@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BagMovement : MonoBehaviour
 {
-    [SerializeField] List<GameObject> bagPositions;
+    public List<GameObject> bagPositions;
     [SerializeField] int speed;
     [SerializeField] GameObject rejectButton;
     [SerializeField] GameObject acceptButton;

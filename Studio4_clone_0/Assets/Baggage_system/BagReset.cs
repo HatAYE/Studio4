@@ -23,7 +23,7 @@ public class BagReset : MonoBehaviour
     }
     IEnumerator ActivateReset() 
     {
-        if (bagMovement.currentPositionIndex >= 3)
+        if (bagMovement.currentPositionIndex >= bagMovement.bagPositions.Count)
         {
         yield return new WaitForSeconds(1);
             resetPoint.SetActive(true);
