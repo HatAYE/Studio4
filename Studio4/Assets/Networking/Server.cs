@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using JetBrains.Annotations;
 
 public class Server : MonoBehaviour
 {
@@ -54,4 +55,9 @@ public class Server : MonoBehaviour
                 }
         }
     }
+        public void Send(byte[] buffer)
+        {
+            if (clientIsConnected)
+            { client.Send(buffer); }
+        }
 }

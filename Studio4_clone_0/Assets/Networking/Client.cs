@@ -9,7 +9,6 @@ using UnityEngine;
 public class Client : MonoBehaviour
 {
     Socket socket;
-    [SerializeField] GameObject player;
     private void Start()
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -24,8 +23,9 @@ public class Client : MonoBehaviour
             {
                 byte[] buffer = new byte[256];
                 socket.Receive(buffer);
-                player.transform.position = Util.DeserializeVector3(buffer);
-
+                InstantiatePacket packet = new InstantiatePacket().Deserialize(buffer);
+                InstantiateFromNetwork(packet.prefabName, packet.position, packet.rotation);
+                
             }
             catch
             {
@@ -33,6 +33,10 @@ public class Client : MonoBehaviour
             }
         }
 
+    }
+    void InstantiateFromNetwork(string prefabName, Vector3 position, Quaternion rotation)
+    {
+        Instantiate(Resources.Load(prefabName), position, rotation);
     }
 }
 

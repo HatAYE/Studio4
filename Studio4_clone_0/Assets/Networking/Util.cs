@@ -11,7 +11,7 @@ public class Util
         BinaryWriter bw= new BinaryWriter(stream);
         bw.Write(vector.x);
         bw.Write(vector.y);
-        bw.Write(vector.z);
+        bw.Write(vector.z);  
         return stream.ToArray();
     }
     public static Vector3 DeserializeVector3(byte[] data)

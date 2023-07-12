@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] int speed;
     IEnumerator MoveCam(Vector2 targetPosition, Vector2 scorePos)
     {
-        while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
+        while (Vector2.Distance(transform.position, targetPosition) > 0.01f)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             score.transform.position = Vector2.MoveTowards(transform.position, scorePos, speed * Time.deltaTime);
