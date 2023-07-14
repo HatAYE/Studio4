@@ -33,11 +33,13 @@ public class BagMovement : MonoBehaviour
         while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            if (rejectButton != null)
             rejectButton.SetActive(false);
             acceptButton.SetActive(false);
             yield return null;
         }
-        rejectButton.SetActive(true);
+        if (rejectButton != null)
+            rejectButton.SetActive(true);
         acceptButton.SetActive(true);
         isMoving = false;
         currentPositionIndex++;
