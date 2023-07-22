@@ -11,7 +11,6 @@ public class BagMovement : MonoBehaviour
     [SerializeField] GameObject acceptButton;
     [SerializeField] PointSystem pointSystem;
     public int currentPositionIndex;
-    Coroutine movementCoroutine;
     bool isMoving;
     bool initialMove=true;
     public bool rejecting;
@@ -48,19 +47,11 @@ public class BagMovement : MonoBehaviour
     }
     public void MoveToPosition()
     {
-        if (!isMoving && currentPositionIndex < bagPositions.Count - 1)
-        {
-            if (movementCoroutine != null)
-            {
-                // Stop the previous coroutine if it was running
-                StopCoroutine(movementCoroutine);
-            }
-        }
         if (currentPositionIndex < bagPositions.Count)
         {
             Vector3 targetPosition = bagPositions[currentPositionIndex].transform.position;
             rejecting = true;
-            movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
+            StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
         }
         
     }
@@ -69,15 +60,9 @@ public class BagMovement : MonoBehaviour
     {
         if (!isMoving && currentPositionIndex < 3)
         {
-            if (movementCoroutine != null)
-            {
-                // Stop the previous coroutine if it was running
-                StopCoroutine(movementCoroutine);
-            }
             Vector3 targetPosition = bagPositions[bagPositions.Count - 1].transform.position;
             currentPositionIndex = bagPositions.Count - 1;
-            movementCoroutine = StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
-            //pointSystem.FalseItemCheck();
+            StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
         }
     }
 }

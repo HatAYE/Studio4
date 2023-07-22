@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.MemoryProfiler;
+
 using UnityEngine;
 
 public class InstantiatePacket: BasePacket
@@ -15,7 +13,7 @@ public class InstantiatePacket: BasePacket
         position = Vector3.zero;
         rotation = Quaternion.identity;
     }
-    public InstantiatePacket(PlayerData player ,string prefabName, Vector3 position, Quaternion rotation) : base(player, PackType.instantiate)
+    public InstantiatePacket(PlayerData player, string GameObjectID, string prefabName, Vector3 position, Quaternion rotation) : base(player, PackType.instantiate, GameObjectID)
     {
         this.prefabName = prefabName;
         this.position = position;

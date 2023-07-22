@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PointSystem : MonoBehaviour
 {
     private static int totalScore;
-    int itemValue;
     [SerializeField] BagReset bagReset;
     [SerializeField] BagMovement bagMovement;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -93,7 +92,6 @@ public class PointSystem : MonoBehaviour
     void Update()
     {
         scoreText.text = totalScore.ToString();
-        Debug.Log(itemValue);
         if (Input.GetMouseButtonDown(0))
         {
             InteractingWithItem();
