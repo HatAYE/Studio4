@@ -25,13 +25,13 @@ public class ObjectRandomizer : MonoBehaviour
             canBeInstantiated = false;
             gotInstantiated = false;
         }*/
-        /*if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q))
         {
             string bag = bagObjects[Random.Range(0, bagObjects.Count)];
             GameObject instantiatedObject = Client.instance.InstantiateLocally(bag, new Vector3(Random.Range(0, 5), Random.Range(0, 5), 0), Quaternion.identity);
             Client.instance.Send(new InstantiatePacket(Client.instance.playerData, instantiatedObject.GetComponent<ObjectID>().objectID, bag, new Vector3(Random.Range(0, 5), Random.Range(0, 5), 0), Quaternion.identity).Serialize());
 
-        }*/
+        }
     }
 
     /*public void RandomizeObjects(Transform instantiatingPosition)
