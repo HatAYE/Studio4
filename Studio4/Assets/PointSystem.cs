@@ -7,24 +7,23 @@ using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour
 {
-    int scorePoints;
-    int itemValue;
+    private static int totalScore;
     [SerializeField] BagReset bagReset;
     [SerializeField] BagMovement bagMovement;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] List<Transform> legalItemsList = new List<Transform>();
-    [SerializeField] List<Transform> illegalItemsList = new List<Transform>();
+    List<Transform> legalItemsList = new List<Transform>();
+    List<Transform> illegalItemsList = new List<Transform>();
 
     void CalculatePoints(int itemPointValue)
     {
-        scorePoints += itemPointValue;
+        totalScore += itemPointValue;
     }
 
     public void ItemCheck()
     {
         ///this function will run a check on the type of items are in the bag. each item will have an index number ranging from 0 to 3. 0 being a safe item whilie 3 being high danger
         /// this function should loop items, access their points, determine how much points the player will gain or lose
-        if (bagMovement.currentPositionIndex == 3)
+        if (bagMovement.currentPositionIndex == bagMovement.bagPositions.Count)
         {
             for (int i = 0; i < bagReset.objectRandomizer.Count; i++)
             {
@@ -74,27 +73,25 @@ public class PointSystem : MonoBehaviour
 
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Items"));
-        if (hit.collider != null && bagMovement.currentPositionIndex== bagMovement.bagPositions.Count-1)
-        {
-            if (hit.collider.gameObject.GetComponent<ItemType>() != null)
+            if (hit.collider != null && bagMovement.currentPositionIndex == bagMovement.bagPositions.Count - 1)
             {
-                if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == true)
+                if (hit.collider.gameObject.GetComponent<ItemType>() != null)
                 {
-                    Destroy(hit.collider.gameObject);
-                }
-                else if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == false)
-                {
-                    CalculatePoints(-50);
+                    if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == true)
+                    {
+                        Destroy(hit.collider.gameObject);
+                    }
+                    else if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == false)
+                    {
+                        CalculatePoints(-50);
+                    }
                 }
             }
-        }
-
     }
+
     void Update()
     {
-        scoreText.text = scorePoints.ToString();
-        //FalseItemCheck();
-        Debug.Log(itemValue);
+        scoreText.text = totalScore.ToString();
         if (Input.GetMouseButtonDown(0))
         {
             InteractingWithItem();

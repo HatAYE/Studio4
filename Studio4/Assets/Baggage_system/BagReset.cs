@@ -21,23 +21,23 @@ public class BagReset : MonoBehaviour
         
         StartCoroutine(ActivateReset());
     }
-    IEnumerator ActivateReset() 
+    IEnumerator ActivateReset()
     {
         if (bagMovement.currentPositionIndex >= bagMovement.bagPositions.Count)
         {
-        yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
             resetPoint.SetActive(true);
         }
         else resetPoint.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Respawn")
+        if (other.gameObject== resetPoint.gameObject)
         {
-            transform.position = startPoint.transform.position;
-            bagMovement.currentPositionIndex = 0;
-            DestroyGameobjects(transform);
-            //destroy children of item positions
+                transform.position = startPoint.transform.position;
+                bagMovement.currentPositionIndex = 0;
+                DestroyGameobjects(transform);
+                //destroy children of item positions
         }
     }
 
