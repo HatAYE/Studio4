@@ -43,13 +43,14 @@ public class Client : MonoBehaviour
         {
             try
             {
-                byte[] buffer = new byte[256];
+                byte[] buffer = new byte[socket.Available];
                 socket.Receive(buffer);
                 //InstantiatePacket packet = new InstantiatePacket().Deserialize(buffer);
                 //InstantiateFromNetwork(packet.prefabName, packet.position, packet.rotation);
                 BasePacket basePacket= new BasePacket().Deserialize(buffer);
                 if (basePacket.packType == BasePacket.PackType.instantiate)
                 {
+                    Debug.LogError("Received");
                     InstantiatePacket ip = new InstantiatePacket().Deserialize(buffer);
                     InstantiateFromNetwork(ip);
                 }

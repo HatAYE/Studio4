@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Hayat_scenes/Networking_scene.unity
     guid: 4e8ce0a36f4a4ce46b5a5391dde6b3b6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hayat_scenes/Server.unity
     guid: 6772268d4817fec4a9f9c884789cbbd2
   m_configObjects: {}

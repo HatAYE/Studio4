@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Server : MonoBehaviour
 {
     Socket serversocket;
-    List<Socket> clients = new List<Socket>();
+    public List<Socket> clients = new List<Socket>();
 
     void Start()
     {
