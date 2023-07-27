@@ -155,8 +155,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!4 &753799878
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23913fe3dc19d8042ae7a9e10010c8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onObjectInstantiation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1460046380
 Transform:
   m_ObjectHideFlags: 0

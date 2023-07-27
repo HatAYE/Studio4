@@ -2,14 +2,16 @@
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Events;
 
-
+[System.Serializable]
+public class ObjectInstantiationEvent : UnityEvent<int, Vector3, Quaternion> { }
 public class Client : MonoBehaviour
 {
     Socket socket;
     public static Client instance;
     public PlayerData playerData;
-
+    public ObjectInstantiationEvent onObjectInstantiation;
     private void Awake()
     {
         if (instance == null)
@@ -45,13 +47,11 @@ public class Client : MonoBehaviour
             {
                 byte[] buffer = new byte[socket.Available];
                 socket.Receive(buffer);
-                //InstantiatePacket packet = new InstantiatePacket().Deserialize(buffer);
-                //InstantiateFromNetwork(packet.prefabName, packet.position, packet.rotation);
                 BasePacket basePacket= new BasePacket().Deserialize(buffer);
                 if (basePacket.packType == BasePacket.PackType.instantiate)
                 {
-                    Debug.LogError("Received");
                     InstantiatePacket ip = new InstantiatePacket().Deserialize(buffer);
+                    Debug.LogError("we receiving");
                     InstantiateFromNetwork(ip);
                 }
 
@@ -82,6 +82,8 @@ public class Client : MonoBehaviour
     {
         socket.Send(buffer);
     }
+
+
     public static GameObject InstantiateFromNetwork(InstantiatePacket IP)
     {
         GameObject gameObject= Instantiate(Resources.Load(IP.prefabName), IP.position, IP.rotation) as GameObject;
