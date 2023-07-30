@@ -48,27 +48,34 @@ public class Client : MonoBehaviour
                 byte[] buffer = new byte[socket.Available];
                 socket.Receive(buffer);
                 BasePacket basePacket= new BasePacket().Deserialize(buffer);
+
+
                 if (basePacket.packType == BasePacket.PackType.instantiate)
                 {
                     InstantiatePacket ip = new InstantiatePacket().Deserialize(buffer);
-                    Debug.LogError("we receiving");
                     InstantiateFromNetwork(ip);
                 }
 
-                /*else if (bp.packType == BasePacket.PackType.Movement)
+                else if (basePacket.packType == BasePacket.PackType.destroy)
                 {
-                    MovementPacket mp = new MovementPacket().Desrialize(buffer);
-                    NetworkComponent[] ncs = FindObjectsOfType<NetworkComponent>();
+                    DestroyPacket dp = new DestroyPacket().Deserialize(buffer);
+                    DestroyFromNetwork(dp);
+                }
 
-                    for (int i = 0; i < ncs.Length; i++)
+                else if (basePacket.packType == BasePacket.PackType.movement)
+                {
+                    MovementPacket mp = new MovementPacket().Deserialize(buffer);
+                    ObjectID[] ID = FindObjectsOfType<ObjectID>();
+
+                    for (int i = 0; i < ID.Length; i++)
                     {
-                        if (ncs[i].GameObjectID == mp.GameObjectID)
+                        if (ID[i].objectID == mp.GameObjectID)
                         {
-                            ncs[i].transform.position = mp.position;
+                            ID[i].transform.position = mp.position;
                             break;
                         }
                     }
-                }*/
+                }
             }
             catch
             {
@@ -83,7 +90,7 @@ public class Client : MonoBehaviour
         socket.Send(buffer);
     }
 
-
+    #region Instantiation
     public static GameObject InstantiateFromNetwork(InstantiatePacket IP)
     {
         GameObject gameObject= Instantiate(Resources.Load(IP.prefabName), IP.position, IP.rotation) as GameObject;
@@ -105,6 +112,39 @@ public class Client : MonoBehaviour
 
         return gameObject;
     }
+    #endregion
+
+    #region Destruction
+    public void DestroyFromNetwork(DestroyPacket dp)
+    {
+        // Find all objects with the ObjectID component
+        ObjectID[] objectIDs = FindObjectsOfType<ObjectID>();
+
+        // Loop through the objects to find the one with the matching GameObjectID
+        foreach (ObjectID objectIDComponent in objectIDs)
+        {
+            if (objectIDComponent.objectID == dp.GameObjectID)
+            {
+                // Destroy the game object associated with the ObjectID component
+                Destroy(objectIDComponent.gameObject);
+                return;
+            }
+        }
+    }
+    public void DestroyLocally(string gameObjectID)
+    {
+        ObjectID[] objectIDs = FindObjectsOfType<ObjectID>();
+
+        foreach (ObjectID objectIDComponent in objectIDs)
+        {
+            if (objectIDComponent.objectID == gameObjectID)
+            {
+                Destroy(objectIDComponent.gameObject);
+                return;
+            }
+        }
+    }
+    #endregion
 }
 
 

@@ -12,6 +12,6 @@ public class ObjectID : MonoBehaviour
 
     public void GenerateGameObjectIDToSelf()
     {
-        objectID = Random.Range(0, 10).ToString();
+        objectID = Random.Range(0, 1000).ToString();
     }
 }

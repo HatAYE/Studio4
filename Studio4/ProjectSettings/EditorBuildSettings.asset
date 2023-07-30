@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Hayat_scenes/Server.unity
     guid: 6772268d4817fec4a9f9c884789cbbd2
+  - enabled: 0
+    path: Assets/Scenes/Hayat_scenes/HayatTestScene.unity
+    guid: 65989bf0aaf5b404593c1fd6bbfe2aa6
   m_configObjects: {}

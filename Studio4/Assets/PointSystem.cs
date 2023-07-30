@@ -67,26 +67,36 @@ public class PointSystem : MonoBehaviour
     }
 
    
-    private void InteractingWithItem()
+    void InteractingWithItem()
     {
         ///this function is supposed to detect whether the item clicked on is illegal or not. if player click on item and it is in fact illegal, item gets destroyed and players gains some points. if player clicks and item isn't illegal, he loses points and items remains.
 
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Items"));
-            if (hit.collider != null && bagMovement.currentPositionIndex == bagMovement.bagPositions.Count - 1)
+        if (hit.collider != null && bagMovement.currentPositionIndex == bagMovement.bagPositions.Count - 1)
+        {
+            if (hit.collider.gameObject.GetComponent<ItemType>() != null)
             {
-                if (hit.collider.gameObject.GetComponent<ItemType>() != null)
+                if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == true)
                 {
-                    if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == true)
+                    //Destroy(hit.collider.gameObject);
+                    ObjectID objectIDComponent = hit.collider.gameObject.GetComponent<ObjectID>();
+                    if (objectIDComponent != null)
                     {
-                        Destroy(hit.collider.gameObject);
-                    }
-                    else if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == false)
-                    {
-                        CalculatePoints(-50);
+                        // Get the objectID of the clicked GameObject
+                        string objectID = objectIDComponent.objectID;
+
+                        // Destroy the GameObject locally and notify the server to destroy it as well
+                        Client.instance.DestroyLocally(objectID);
+                        Client.instance.Send(new DestroyPacket(Client.instance.playerData, objectID).Serialize());
                     }
                 }
+                else if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == false)
+                {
+                    CalculatePoints(-50);
+                }
             }
+        }
     }
 
     void Update()
@@ -96,5 +106,21 @@ public class PointSystem : MonoBehaviour
         {
             InteractingWithItem();
         }
+        
+
+        /*if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Items"));
+            if (hit.collider.gameObject.GetComponent<ItemType>() != null)
+            {
+                ObjectID objectID = hit.collider.gameObject.GetComponent<ObjectID>();
+                if (objectID != null)
+                {
+                    Client.instance.DestroyLocally(objectID.objectID);
+                    Client.instance.Send(new DestroyPacket(Client.instance.playerData, objectID.objectID).Serialize());
+                }
+            }
+        }*/
     }
 }

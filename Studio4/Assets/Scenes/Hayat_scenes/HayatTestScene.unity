@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23913fe3dc19d8042ae7a9e10010c8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onObjectInstantiation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &32593706
 Transform:
   m_ObjectHideFlags: 0
@@ -401,8 +404,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!61 &95740223
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -639,7 +640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209651687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.096, y: 0.029, z: -0.19999999}
+  m_LocalPosition: {x: -0.096, y: 0.029, z: -0.14}
   m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -688,8 +689,6 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
   - Bag_prefabs/Triangle
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &297431439
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297431439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.002, y: -0.077, z: -0.19999999}
+  m_LocalPosition: {x: -0.002, y: -0.077, z: -0.14}
   m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -765,8 +764,6 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
   - Bag_prefabs/Triangle
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &320290914
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436382979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09, y: -0.077, z: -0.19999999}
+  m_LocalPosition: {x: 0.09, y: -0.077, z: -0.14}
   m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -947,8 +944,6 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
   - Bag_prefabs/Triangle
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &477175324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,8 +1088,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &661111007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,8 +1168,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!61 &714804244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2042,7 +2033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066169856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.096, y: -0.077, z: -0.19999999}
+  m_LocalPosition: {x: -0.096, y: -0.077, z: -0.14}
   m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2091,8 +2082,6 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
   - Bag_prefabs/Triangle
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1097791019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,7 +2108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097791019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 0.028999992, z: -0.19999999}
+  m_LocalPosition: {x: 0.09, y: 0.028999992, z: -0.14}
   m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2168,8 +2157,6 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
   - Bag_prefabs/Triangle
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1108435214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,8 +2190,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!61 &1108435216
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2506,7 +2491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317745072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.002, y: 0.028999992, z: -0.19999999}
+  m_LocalPosition: {x: -0.002, y: 0.028999992, z: -0.14}
   m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2555,8 +2540,6 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
   - Bag_prefabs/Triangle
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1322369858
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,8 +3365,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1891239909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,8 +3805,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &1983903275
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,8 +4392,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!1 &2142488100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,8 +4425,6 @@ MonoBehaviour:
   bagObjects:
   - Bag_prefabs/safe_item
   - Bag_prefabs/square
-  gotInstantiated: 0
-  canBeInstantiated: 0
 --- !u!61 &2142488102
 BoxCollider2D:
   m_ObjectHideFlags: 0

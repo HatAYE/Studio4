@@ -11,7 +11,7 @@ public class BasePacket
     public string GameObjectID;
     public enum PackType
     {
-        none, instantiate, destroy, animation
+        none, instantiate, destroy, animation, movement
     }
     public PackType packType { get; private set; }
     public BasePacket()

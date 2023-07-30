@@ -26,35 +26,39 @@ public class ObjectRandomizer : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            int prefabIndex = Random.Range(0, bagObjects.Count);
+            Client.instance.onObjectInstantiation?.Invoke(prefabIndex, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        }
         /*if (bagmovement.currentPositionIndex == 0)
         {
-            canBeInstantiated = true;
-            RandomizeObjects(transform);
+            canBeInstantiated = true;            
+            int prefabIndex = Random.Range(0, bagObjects.Count);
+            Client.instance.onObjectInstantiation?.Invoke(prefabIndex, new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity); // Call the event to trigger the object instantiation on both clients
         }
         else
         {
             canBeInstantiated = false;
             gotInstantiated = false;
         }*/
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            // Get a random prefab index
-            int prefabIndex = Random.Range(0, bagObjects.Count);
-
-            // Call the event to trigger the object instantiation on both clients
-            Client.instance.onObjectInstantiation?.Invoke(prefabIndex, new Vector3(Random.Range(0, 5), Random.Range(0, 5), 0), Quaternion.identity);
-        }
     }
     public void InstantiateLocallyAndSendPacket(int prefabIndex, Vector3 position, Quaternion rotation)
     {
-        // Instantiate the object locally on this client
-        string prefabName = bagObjects[prefabIndex];
-
-        // Send an instantiate packet to the server, which will relay it to all clients
-        GameObject instantiatedObject = Client.instance.InstantiateLocally(prefabName, position, rotation);
-        InstantiatePacket packet = new InstantiatePacket(Client.instance.playerData, prefabIndex, instantiatedObject.GetComponent<ObjectID>().objectID, prefabName, position, rotation);
-        Client.instance.Send(packet.Serialize());
+        //if (!gotInstantiated && canBeInstantiated == true)
+        //{
+            string prefabName = bagObjects[prefabIndex];
+            GameObject instantiatedObject = Client.instance.InstantiateLocally(prefabName, position, rotation);// Send an instantiate packet to the server, which will relay it to all clients
+            InstantiatePacket packet = new InstantiatePacket(Client.instance.playerData, prefabIndex, instantiatedObject.GetComponent<ObjectID>().objectID, prefabName, position, rotation);
+            instantiatedObject.transform.parent = transform;
+            gotInstantiated = true;
+            Client.instance.Send(packet.Serialize());
+        //}
     }
+
+
+
+
     /*public void RandomizeObjects(Transform instantiatingPosition)
     {
         if (!gotInstantiated && canBeInstantiated==true)

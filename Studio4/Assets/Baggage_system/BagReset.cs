@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class BagReset : MonoBehaviour
 {
-    public List <ObjectRandomizer> objectRandomizer;
+    public List<ObjectRandomizer> objectRandomizer;
     [SerializeField] GameObject resetPoint;
     [SerializeField] GameObject startPoint;
     BagMovement bagMovement;
     void Start()
     {
-        bagMovement= GetComponent<BagMovement>();
+        bagMovement = GetComponent<BagMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log("position index:" + bagMovement.currentPositionIndex);
-        
+
         StartCoroutine(ActivateReset());
     }
     IEnumerator ActivateReset()
@@ -32,25 +32,31 @@ public class BagReset : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject== resetPoint.gameObject)
+        if (other.gameObject == resetPoint.gameObject)
         {
-                transform.position = startPoint.transform.position;
-                bagMovement.currentPositionIndex = 0;
-                DestroyGameobjects(transform);
-                //destroy children of item positions
+            transform.position = startPoint.transform.position;
+            bagMovement.currentPositionIndex = 0;
+            DestroyGameobjects(transform);
+            //destroy children of item positions
         }
     }
 
     void DestroyGameobjects(Transform parent)
     {
-        for (int i =0; i<objectRandomizer.Count; i++)
+        for (int i = 0; i < objectRandomizer.Count; i++)
         {
             Transform bagObject = objectRandomizer[i].transform;
             if (bagObject.childCount > 0)
             {
                 Transform child = parent.transform.GetChild(i).GetChild(0);
-                Destroy(child.gameObject); // Destroy the child GameObject
+                ObjectID objectID = child.GetComponent<ObjectID>();
+                if (objectID != null)
+                {
+                    Client.instance.DestroyLocally(objectID.objectID);
+                    Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
+                }
             }
         }
     }
 }
+
