@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour
 {
-    private static int totalScore;
+    public static int totalScore;
     [SerializeField] BagReset bagReset;
     [SerializeField] BagMovement bagMovement;
     [SerializeField] TextMeshProUGUI scoreText;

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 480958309429265923}
   - component: {fileID: 7722948045151055015}
   - component: {fileID: 5167651240171031118}
-  - component: {fileID: 6923076471701269861}
-  - component: {fileID: 6025416705412249078}
-  - component: {fileID: 8624140059686285059}
+  - component: {fileID: 6449121249410863857}
+  - component: {fileID: 6200914314079736183}
+  - component: {fileID: 6790785249564561009}
   m_Layer: 3
-  m_Name: grenade
+  m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 853585680, guid: aee0ed506cb8218468ff796957c506e5, type: 3}
+  m_Sprite: {fileID: 616881166, guid: c42b19be13554d34dbf349549602afc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,23 @@ MonoBehaviour:
   dangerValue: 1
   dangerPoints: -50
   illegalItem: 1
---- !u!114 &6923076471701269861
+--- !u!114 &6449121249410863857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633459780243167177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10117440a0e638645b072c4358b93f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteSheet:
+  - {fileID: 616881166, guid: c42b19be13554d34dbf349549602afc9, type: 3}
+  - {fileID: 844747989, guid: c42b19be13554d34dbf349549602afc9, type: 3}
+  bagIndex: {fileID: 0}
+--- !u!114 &6200914314079736183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,24 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerID: 
   objectID: 
---- !u!114 &6025416705412249078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6633459780243167177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10117440a0e638645b072c4358b93f48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteSheet:
-  - {fileID: 853585680, guid: aee0ed506cb8218468ff796957c506e5, type: 3}
-  - {fileID: 1453031342, guid: aee0ed506cb8218468ff796957c506e5, type: 3}
-  bagIndex: {fileID: 0}
---- !u!70 &8624140059686285059
-CapsuleCollider2D:
+--- !u!61 &6790785249564561009
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,6 +146,16 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.004557635}
-  m_Size: {x: 0.29350016, y: 0.35557044}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.23, y: 0.15}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.23, y: 0.15}
+  m_EdgeRadius: 0
