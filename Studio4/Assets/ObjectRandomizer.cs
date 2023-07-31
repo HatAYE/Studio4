@@ -7,42 +7,68 @@ public class ObjectRandomizer : MonoBehaviour
 {
     [SerializeField] List<string> bagObjects = new List<string>();
     BagMovement bagmovement;
-    [SerializeField] bool gotInstantiated = false;
-    [SerializeField] bool canBeInstantiated;
+    bool gotInstantiated = false;
+    bool canBeInstantiated;
     private void Start()
     {
-        //bagmovement= transform.parent.GetComponent<BagMovement>();
+        bagmovement= transform.parent.GetComponent<BagMovement>();
+        if (Client.instance != null)
+        {
+            Client.instance.onObjectInstantiation.AddListener(InstantiateLocallyAndSendPacket);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (Client.instance != null)
+        {
+            Client.instance.onObjectInstantiation.RemoveListener(InstantiateLocallyAndSendPacket);
+        }
     }
     void Update()
     {
-        /*if (bagmovement.currentPositionIndex == 0)
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
-            canBeInstantiated = true;
-            RandomizeObjects(transform);
+            int prefabIndex = Random.Range(0, bagObjects.Count);
+            Client.instance.onObjectInstantiation?.Invoke(prefabIndex, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        }*/
+        if (bagmovement.currentPositionIndex == 0)
+        {
+            canBeInstantiated = true;            
+            int prefabIndex = Random.Range(0, bagObjects.Count);
+            Client.instance.onObjectInstantiation?.Invoke(prefabIndex, new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity); // Call the event to trigger the object instantiation on both clients
         }
         else
         {
             canBeInstantiated = false;
             gotInstantiated = false;
-        }*/
-        if (Input.GetKey(KeyCode.Q))
-        {
-            string bag = bagObjects[Random.Range(0, bagObjects.Count)];
-            GameObject instantiatedObject = Client.instance.InstantiateLocally(bag, new Vector3(Random.Range(0, 5), Random.Range(0, 5), 0), Quaternion.identity);
-            Client.instance.Send(new InstantiatePacket(Client.instance.playerData, instantiatedObject.GetComponent<ObjectID>().objectID, bag, new Vector3(Random.Range(0, 5), Random.Range(0, 5), 0), Quaternion.identity).Serialize());
-
         }
     }
+    public void InstantiateLocallyAndSendPacket(int prefabIndex, Vector3 position, Quaternion rotation)
+    {
+        if (!gotInstantiated && canBeInstantiated == true)
+        {
+            string prefabName = bagObjects[prefabIndex];
+            GameObject instantiatedObject = Client.instance.InstantiateLocally(prefabName, position, rotation);// Send an instantiate packet to the server, which will relay it to all clients
+            InstantiatePacket packet = new InstantiatePacket(Client.instance.playerData, prefabIndex, instantiatedObject.GetComponent<ObjectID>().objectID, prefabName, position, rotation);
+            instantiatedObject.transform.parent = transform;
+            gotInstantiated = true;
+            Client.instance.Send(packet.Serialize());
+        }
+    }
+
+
+
 
     /*public void RandomizeObjects(Transform instantiatingPosition)
     {
         if (!gotInstantiated && canBeInstantiated==true)
         {
-            string bag = bagObjects[Random.Range(0, bagObjects.Count)];
+            int prefabIndex = Random.Range(0, bagObjects.Count);
+            string bag = bagObjects[prefabIndex];
             GameObject instantiatedObject = Client.instance.InstantiateLocally(bag, instantiatingPosition.position, Quaternion.identity);
             instantiatedObject.transform.parent = transform;
             gotInstantiated = true;
-            Client.instance.Send(new InstantiatePacket(Client.instance.playerData, instantiatedObject.GetComponent<ObjectID>().objectID, bag, instantiatingPosition.position, Quaternion.identity).Serialize());
+            Client.instance.Send(new InstantiatePacket(Client.instance.playerData, prefabIndex, instantiatedObject.GetComponent<ObjectID>().objectID, bag, instantiatingPosition.position, Quaternion.identity).Serialize());
             
         }
     }*/

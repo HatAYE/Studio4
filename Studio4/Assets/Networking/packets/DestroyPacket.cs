@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class DestroyPacket : BasePacket
 {
-    public int itemID { get; private set; }
+    public string GameObjectID { get; private set; }
 
     public DestroyPacket() : base()
     {
-        itemID = -1;
+        GameObjectID = string.Empty;
     }
 
-    public DestroyPacket(PlayerData player, string GameObjectID, int objectId) : base(player, PackType.destroy, GameObjectID)
+    public DestroyPacket(PlayerData player, string GameObjectID) : base(player, PackType.destroy, GameObjectID)
     {
-        this.itemID = objectId;
+        this.GameObjectID = GameObjectID;
     }
 
     public byte[] Serialize()
     {
         BeginSerialization();
-        writer.Write(itemID);
+        writer.Write(GameObjectID);
         return FinishSerialization();
+
     }
 
     public new DestroyPacket Deserialize(byte[] buffer)
     {
-        Deserialize(buffer);
-        itemID = reader.ReadInt32();
+        base.Deserialize(buffer);
+        GameObjectID = reader.ReadString();
         return this;
     }
 }
