@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelingUp : MonoBehaviour
 {
-    float levelTimer= 10;
+    float levelTimer= 120;
     [SerializeField] float requiredPointsToPass;
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] GameObject loseScreen;

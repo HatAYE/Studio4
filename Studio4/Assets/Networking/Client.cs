@@ -12,6 +12,7 @@ public class Client : MonoBehaviour
     public static Client instance;
     public PlayerData playerData;
     public ObjectInstantiationEvent onObjectInstantiation;
+    public static int totalScore;
     private void Awake()
     {
         if (instance == null)
@@ -76,6 +77,11 @@ public class Client : MonoBehaviour
                         }
                     }
                 }
+                else if (basePacket.packType == BasePacket.PackType.score)
+                {
+                    ScorePacket sp = new ScorePacket().Deserialize(buffer);
+                    CalculatePointsFromNetwork(sp);
+                }
             }
             catch
             {
@@ -117,33 +123,35 @@ public class Client : MonoBehaviour
     #region Destruction
     public void DestroyFromNetwork(DestroyPacket dp)
     {
-        // Find all objects with the ObjectID component
-        ObjectID[] objectIDs = FindObjectsOfType<ObjectID>();
-
-        // Loop through the objects to find the one with the matching GameObjectID
-        foreach (ObjectID objectIDComponent in objectIDs)
+        ObjectID objectIDComponent = FindObjectOfType<ObjectID>();
+        if (objectIDComponent != null && objectIDComponent.objectID == dp.GameObjectID)
         {
-            if (objectIDComponent.objectID == dp.GameObjectID)
-            {
-                // Destroy the game object associated with the ObjectID component
-                Destroy(objectIDComponent.gameObject);
-                return;
-            }
+            Destroy(objectIDComponent.gameObject);
         }
     }
     public void DestroyLocally(string gameObjectID)
     {
-        ObjectID[] objectIDs = FindObjectsOfType<ObjectID>();
-
-        foreach (ObjectID objectIDComponent in objectIDs)
+        ObjectID objectIDComponent = FindObjectOfType<ObjectID>();
+        if (objectIDComponent != null && objectIDComponent.objectID == gameObjectID)
         {
-            if (objectIDComponent.objectID == gameObjectID)
-            {
-                Destroy(objectIDComponent.gameObject);
-                return;
-            }
+            Destroy(objectIDComponent.gameObject);
         }
     }
+    #endregion
+
+    #region Score and points
+
+    public void CalculatePointsFromNetwork(ScorePacket dp)
+    {
+        totalScore += dp.gameScore;
+    }
+
+    public void CalculatePointsLocally(int amount)
+    {
+        totalScore += amount;
+    }
+
+
     #endregion
 }
 

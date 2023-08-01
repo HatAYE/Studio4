@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8516185528421989725}
   - component: {fileID: 7113406721790250536}
   - component: {fileID: 1548358548317361136}
+  - component: {fileID: 4902100138871025166}
   m_Layer: 3
   m_Name: Shirt
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8578628469891191181}
   m_LocalRotation: {x: 0, y: 0, z: -0.35667273, w: 0.93422943}
   m_LocalPosition: {x: 2.7178187, y: 1.39, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -159,3 +160,15 @@ MonoBehaviour:
   - {fileID: 2054038979, guid: f3be826c327eef34585ae04213186460, type: 3}
   - {fileID: 1608078786, guid: f3be826c327eef34585ae04213186460, type: 3}
   bagIndex: {fileID: 0}
+--- !u!114 &4902100138871025166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578628469891191181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cccae6ddb8e224fbe79b766af227fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

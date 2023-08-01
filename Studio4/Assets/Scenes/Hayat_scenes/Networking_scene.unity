@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
-  - Bag_prefabs/square
+  - Bag_prefabs/safe_item1
 --- !u!4 &753799878
 Transform:
   m_ObjectHideFlags: 0

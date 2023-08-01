@@ -55,13 +55,13 @@ public class Server : MonoBehaviour
                         if (i == j) continue;
                         clients[j].Send(buffer);
 
-                        BasePacket basePacket = new BasePacket().Deserialize(buffer);
+                        /*BasePacket basePacket = new BasePacket().Deserialize(buffer);
                         if (basePacket.packType == BasePacket.PackType.instantiate)
                         {
                             InstantiatePacket ip = new InstantiatePacket().Deserialize(buffer);
                             InstantiateFromNetwork(ip);
 
-                        }
+                        }*/
                     }
                 }
             }
@@ -71,7 +71,7 @@ public class Server : MonoBehaviour
 
         }
     }
-    public static GameObject InstantiateFromNetwork(InstantiatePacket IP)
+    /*public static GameObject InstantiateFromNetwork(InstantiatePacket IP)
     {
         GameObject gameObject = Instantiate(Resources.Load(IP.prefabName), IP.position, IP.rotation) as GameObject;
         ObjectID objectID = gameObject.GetComponent<ObjectID>();
@@ -86,5 +86,5 @@ public class Server : MonoBehaviour
         {
             clients[i].Send(buffer);
         }
-    }
+    }*/
 }
