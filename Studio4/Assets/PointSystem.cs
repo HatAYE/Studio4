@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour
 {
@@ -42,7 +40,7 @@ public class PointSystem : MonoBehaviour
                             if (bagMovement.rejecting == false)
                             {
                                 Client.instance.CalculatePointsLocally(itemPointValue);
-                                Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, itemPointValue).Serialize());
+                                Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
                             }
 
                             //return;
@@ -54,7 +52,7 @@ public class PointSystem : MonoBehaviour
                             if (illegalItemsList.Count == 0 && bagMovement.rejecting==false)
                             {
                                 Client.instance.CalculatePointsLocally(50);
-                                Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, 50).Serialize());
+                                Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
                                 return;
                             }
                         }
@@ -90,12 +88,14 @@ public class PointSystem : MonoBehaviour
                         string objectID = objectIDComponent.objectID;
                         Client.instance.DestroyLocally(objectID);
                         Client.instance.Send(new DestroyPacket(Client.instance.playerData, objectID).Serialize());
+                        Debug.Log("destroying");
+
                     }
                 }
                 else if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == false)
                 {
                     Client.instance.CalculatePointsLocally(-50);
-                    Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, -50).Serialize());
+                    Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
                 }
             }
         }
@@ -108,21 +108,5 @@ public class PointSystem : MonoBehaviour
         {
             InteractingWithItem();
         }
-        
-
-        /*if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Items"));
-            if (hit.collider.gameObject.GetComponent<ItemType>() != null)
-            {
-                ObjectID objectID = hit.collider.gameObject.GetComponent<ObjectID>();
-                if (objectID != null)
-                {
-                    Client.instance.DestroyLocally(objectID.objectID);
-                    Client.instance.Send(new DestroyPacket(Client.instance.playerData, objectID.objectID).Serialize());
-                }
-            }
-        }*/
     }
 }

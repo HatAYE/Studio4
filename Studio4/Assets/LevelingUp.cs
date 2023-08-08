@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelingUp : MonoBehaviour
 {
-    float levelTimer= 120;
+    float levelTimer= 360;
     [SerializeField] float requiredPointsToPass;
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] GameObject loseScreen;
@@ -26,7 +26,7 @@ public class LevelingUp : MonoBehaviour
 
         if (levelTimer <= 0)
         {
-            if (PointSystem.totalScore < requiredPointsToPass) loseScreen.SetActive(true);
+            if (Client.totalScore < requiredPointsToPass) loseScreen.SetActive(true);
             else winScreen.SetActive(true);
         }
 

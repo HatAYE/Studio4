@@ -287,9 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23913fe3dc19d8042ae7a9e10010c8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onObjectInstantiation:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &32593706
 Transform:
   m_ObjectHideFlags: 0
@@ -614,6 +611,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 95740221}
 --- !u!61 &95740223
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -853,7 +863,7 @@ RectTransform:
   m_GameObject: {fileID: 177865039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40783, y: 0.40783, z: 0.40783}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 927249114}
@@ -861,7 +871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 875, y: 332}
+  m_AnchoredPosition: {x: 349.854, y: 135.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177865041
@@ -1178,6 +1188,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 209651687}
 --- !u!1 &297431439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,8 +1216,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297431439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00016739, y: -0.028159, z: -0.14}
-  m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
+  m_LocalPosition: {x: 0.00016740164, y: -0.028159, z: -0.13999999}
+  m_LocalScale: {x: 0.9001005, y: 0.9001005, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1786938323}
@@ -1262,6 +1274,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 297431439}
 --- !u!1 &311543664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1334,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 311543664}
 --- !u!61 &311543667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1356,6 +1372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320290916}
   - component: {fileID: 320290915}
+  - component: {fileID: 320290917}
   m_Layer: 0
   m_Name: Person 1 Point system
   m_TagString: Untagged
@@ -1393,6 +1410,20 @@ Transform:
   m_Father: {fileID: 55111822}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320290917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320290914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3a23da2392840bfbd62f826d9418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerID: 
+  objectID: 
 --- !u!1 &398809006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1701,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 436382979}
 --- !u!1 &477175324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,6 +1846,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 538770821}
 --- !u!1 &661111007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,6 +1869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661111009}
   - component: {fileID: 661111008}
+  - component: {fileID: 661111010}
   m_Layer: 0
   m_Name: Bag Point system
   m_TagString: Untagged
@@ -1860,6 +1907,20 @@ Transform:
   m_Father: {fileID: 55111822}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &661111010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661111007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3a23da2392840bfbd62f826d9418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerID: 
+  objectID: 
 --- !u!1 &669495091
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,6 +2087,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 714804242}
 --- !u!61 &714804244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2131,7 +2205,7 @@ RectTransform:
   m_GameObject: {fileID: 853678044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40783, y: 0.40783, z: 0.40783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1165954646}
@@ -2143,7 +2217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -7, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853678046
@@ -2172,6 +2246,7 @@ GameObject:
   - component: {fileID: 858546560}
   - component: {fileID: 858546559}
   - component: {fileID: 858546562}
+  - component: {fileID: 858546563}
   m_Layer: 6
   m_Name: Person 2
   m_TagString: Untagged
@@ -2218,6 +2293,7 @@ MonoBehaviour:
   acceptButton: {fileID: 1994646020}
   pointSystem: {fileID: 2036045208}
   currentPositionIndex: 0
+  isMoving: 0
   rejecting: 0
 --- !u!61 &858546559
 BoxCollider2D:
@@ -2337,6 +2413,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &858546563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858546556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3a23da2392840bfbd62f826d9418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerID: 
+  objectID: 
 --- !u!1 &864260211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2733,7 +2823,7 @@ RectTransform:
   m_GameObject: {fileID: 929303587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40783, y: 0.40783, z: 0.40783}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 927249114}
@@ -2741,7 +2831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 836, y: 435}
+  m_AnchoredPosition: {x: 333.944, y: 177.41}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &938370790
@@ -2935,6 +3025,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 942768074}
 --- !u!61 &942768077
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3241,6 +3333,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 1066169856}
 --- !u!1 &1097791019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,6 +3419,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 1097791019}
 --- !u!1 &1108435214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,6 +3453,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 1108435214}
 --- !u!61 &1108435216
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4141,6 +4250,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 1317745072}
 --- !u!1 &1322369858
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,7 +4367,7 @@ RectTransform:
   m_GameObject: {fileID: 1403200295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40783, y: 0.40783, z: 0.40783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1156221750}
@@ -4268,7 +4379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -7, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403200297
@@ -4976,7 +5087,7 @@ RectTransform:
   m_GameObject: {fileID: 1600697107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40783, y: 0.40783, z: 0.40783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 871601357}
@@ -4986,7 +5097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -7, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600697109
@@ -5283,6 +5394,7 @@ GameObject:
   - component: {fileID: 1786938325}
   - component: {fileID: 1786938326}
   - component: {fileID: 1786938327}
+  - component: {fileID: 1786938328}
   m_Layer: 0
   m_Name: Bag
   m_TagString: Untagged
@@ -5387,6 +5499,7 @@ MonoBehaviour:
   acceptButton: {fileID: 938370790}
   pointSystem: {fileID: 661111008}
   currentPositionIndex: 0
+  isMoving: 0
   rejecting: 0
 --- !u!114 &1786938325
 MonoBehaviour:
@@ -5456,6 +5569,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1786938328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786938321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3a23da2392840bfbd62f826d9418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerID: 
+  objectID: 
 --- !u!1 &1819057264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5695,6 +5822,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 1886080891}
 --- !u!1 &1891239909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5853,7 +5993,7 @@ RectTransform:
   m_GameObject: {fileID: 1915982197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40783, y: 0.40783, z: 0.40783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 34975663}
@@ -5864,7 +6004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -7, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1931187168
@@ -6173,6 +6313,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 1970493259}
 --- !u!1 &1983903275
 GameObject:
   m_ObjectHideFlags: 0
@@ -6226,6 +6379,7 @@ GameObject:
   - component: {fileID: 1989767388}
   - component: {fileID: 1989767387}
   - component: {fileID: 1989767385}
+  - component: {fileID: 1989767391}
   m_Layer: 6
   m_Name: Person 1
   m_TagString: Untagged
@@ -6371,6 +6525,7 @@ MonoBehaviour:
   acceptButton: {fileID: 1290319079}
   pointSystem: {fileID: 320290915}
   currentPositionIndex: 0
+  isMoving: 0
   rejecting: 0
 --- !u!4 &1989767390
 Transform:
@@ -6391,6 +6546,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989767391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989767384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3a23da2392840bfbd62f826d9418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerID: 
+  objectID: 
 --- !u!1 &1994646020
 GameObject:
   m_ObjectHideFlags: 0
@@ -6618,6 +6787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036045209}
   - component: {fileID: 2036045208}
+  - component: {fileID: 2036045210}
   m_Layer: 0
   m_Name: Person 2 Point system
   m_TagString: Untagged
@@ -6655,6 +6825,20 @@ Transform:
   m_Father: {fileID: 55111822}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2036045210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036045207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca3a23da2392840bfbd62f826d9418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerID: 
+  objectID: 
 --- !u!1 &2082219765
 GameObject:
   m_ObjectHideFlags: 0
@@ -6713,6 +6897,8 @@ MonoBehaviour:
   - Bag_prefabs/pants
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 2082219765}
 --- !u!61 &2082219768
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6739,6 +6925,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.09}
   m_EdgeRadius: 0
+--- !u!1 &2120283392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120283394}
+  - component: {fileID: 2120283393}
+  m_Layer: 0
+  m_Name: SpawnerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2120283393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120283392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b720e7344bd7874e9905fe134426d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registeredBags:
+  - {fileID: 209651691}
+  - {fileID: 1317745076}
+  - {fileID: 1097791023}
+  - {fileID: 1066169860}
+  - {fileID: 297431443}
+  - {fileID: 436382983}
+  - {fileID: 942768076}
+  - {fileID: 311543666}
+  - {fileID: 2082219767}
+  - {fileID: 2142488101}
+  - {fileID: 1108435215}
+  - {fileID: 714804243}
+  - {fileID: 95740222}
+  - {fileID: 1886080894}
+  - {fileID: 538770824}
+  - {fileID: 1970493262}
+  - {fileID: 2125154616}
+--- !u!4 &2120283394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120283392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0866036, y: -2.1999998, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121733090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6843,6 +7091,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 2125154613}
 --- !u!1 &2142488100
 GameObject:
   m_ObjectHideFlags: 0
@@ -6875,6 +7136,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagObjects:
   - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  - Bag_prefabs/safe_item
+  bagmovement: {fileID: 0}
+  parentObject: {fileID: 2142488100}
 --- !u!61 &2142488102
 BoxCollider2D:
   m_ObjectHideFlags: 0

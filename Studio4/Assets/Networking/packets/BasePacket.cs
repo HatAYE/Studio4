@@ -1,5 +1,6 @@
 
 using System.IO;
+using System.Net;
 
 public class BasePacket
 {
@@ -11,7 +12,7 @@ public class BasePacket
     public string GameObjectID;
     public enum PackType
     {
-        none, instantiate, destroy, animation, movement, score
+        none, instantiate, destroy, animation, movement, score, indexInstantiate
     }
     public PackType packType { get; private set; }
     public BasePacket()
@@ -33,6 +34,7 @@ public class BasePacket
         writer = new BinaryWriter(writeStream);
 
         writer.Write(player.playerID);
+
         writer.Write(player.playerName);
         writer.Write((int)packType);
         writer.Write(GameObjectID);
@@ -43,15 +45,18 @@ public class BasePacket
         return writeStream.ToArray();
     }
 
+
     public BasePacket Deserialize(byte[] buffer)
     {
         readStream = new MemoryStream(buffer);
         reader = new BinaryReader(readStream);
 
         player = new PlayerData(reader.ReadString(), reader.ReadString());
+
         packType = (PackType)reader.ReadInt32();
         GameObjectID = reader.ReadString();
 
         return this;
     }
+
 }

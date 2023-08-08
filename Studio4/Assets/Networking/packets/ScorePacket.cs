@@ -21,7 +21,6 @@ public class ScorePacket : BasePacket
         BeginSerialization();
         writer.Write(gameScore);
         return FinishSerialization();
-
     }
 
     public new ScorePacket Deserialize(byte[] buffer)

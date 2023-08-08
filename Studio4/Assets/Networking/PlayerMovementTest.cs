@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovementTest : MonoBehaviour
 {
     ObjectID ID;
-    static int testScore;
+    [SerializeField] TextMeshProUGUI scoreText;
+    bool playerMoved = false;
+
     void Start()
     {
         ID = GetComponent<ObjectID>();
+        Client.instance.UpdateNetworkEvent += OnUpdateNetwork;
     }
 
-    // Update is called once per frame
+    private void OnUpdateNetwork()
+    {
+        if (playerMoved)
+        {
+            Client.instance.Send(new MovementPacket(Client.instance.playerData, ID.objectID, transform.position).Serialize());
+        }
+    }
+
     void Update()
     {
         #region destroying
@@ -38,20 +50,44 @@ public class PlayerMovementTest : MonoBehaviour
         #endregion
 
         #region movement
-        if (Input.GetKey(KeyCode.W)) transform.position += Vector3.forward * 5 * Time.deltaTime;
-        if (Input.GetKey(KeyCode.S)) transform.position += Vector3.back * 5 * Time.deltaTime;
-        if (Input.GetKey(KeyCode.D)) transform.position += Vector3.right * 5 * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A)) transform.position += Vector3.left * 5 * Time.deltaTime;
-        
-        Client.instance.Send(new MovementPacket( Client.instance.playerData, ID.objectID, transform.position).Serialize());
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += Vector3.forward * 5 * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += Vector3.back * 5 * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += Vector3.right * 5 * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += Vector3.left * 5 * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            playerMoved = true;
+        }
+        else
+        {
+            playerMoved = false;
+        }
+
         #endregion
 
         #region score
         if (Input.GetKeyDown(KeyCode.E))
         {
-
+            Client.instance.CalculatePointsLocally(50);
+            Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize()) ;
         }
-
+        scoreText.text = Client.totalScore.ToString();
         #endregion
     }
 }

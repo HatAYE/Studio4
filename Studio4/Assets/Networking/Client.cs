@@ -2,17 +2,34 @@
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
-using UnityEngine.Events;
 
-[System.Serializable]
-public class ObjectInstantiationEvent : UnityEvent<int, Vector3, Quaternion> { }
+
 public class Client : MonoBehaviour
 {
     Socket socket;
     public static Client instance;
     public PlayerData playerData;
-    public ObjectInstantiationEvent onObjectInstantiation;
     public static int totalScore;
+
+    public delegate void UpdateNetwork();
+    public UpdateNetwork UpdateNetworkEvent;
+
+    const float tickRate = (1000.0f / 15.0f) / 1000.0f;
+    float timer;
+
+    //private int _clientCurrentPositionIndex;
+    /*public int clientCurrentPositionIndex
+    {
+        get { return _clientCurrentPositionIndex; }
+        set
+        {
+            if (_clientCurrentPositionIndex != value)
+            {
+                _clientCurrentPositionIndex = value;
+                GetPositionIdexLocally(_clientCurrentPositionIndex); // Call this whenever the clientCurrentPositionIndex changes
+            }
+        }
+    }*/
     private void Awake()
     {
         if (instance == null)
@@ -27,7 +44,7 @@ public class Client : MonoBehaviour
     }
     private void Start()
     {
-        string id = Random.Range(0, 100).ToString();
+        string id = Random.Range(0,100).ToString();
         playerData = new PlayerData(id, $"player{id}");
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         socket.Connect(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3000));
@@ -42,6 +59,14 @@ public class Client : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
+
+        if(timer >= tickRate)
+        {
+            //UpdateNetworkEvent();
+            timer = 0;
+        }
+
         if (socket.Available>0)
         {
             try
@@ -49,7 +74,6 @@ public class Client : MonoBehaviour
                 byte[] buffer = new byte[socket.Available];
                 socket.Receive(buffer);
                 BasePacket basePacket= new BasePacket().Deserialize(buffer);
-
 
                 if (basePacket.packType == BasePacket.PackType.instantiate)
                 {
@@ -61,6 +85,8 @@ public class Client : MonoBehaviour
                 {
                     DestroyPacket dp = new DestroyPacket().Deserialize(buffer);
                     DestroyFromNetwork(dp);
+                    Debug.Log("network destroy");
+
                 }
 
                 else if (basePacket.packType == BasePacket.PackType.movement)
@@ -80,12 +106,20 @@ public class Client : MonoBehaviour
                 else if (basePacket.packType == BasePacket.PackType.score)
                 {
                     ScorePacket sp = new ScorePacket().Deserialize(buffer);
-                    CalculatePointsFromNetwork(sp);
+                    totalScore = sp.gameScore;
+                }
+
+                else if (basePacket.packType == BasePacket.PackType.indexInstantiate)
+                {
+                    BagInstantiatePacket receivedPacket = new BagInstantiatePacket().Deserialize(buffer);
+                    ClientSpawnManager.instance.ReceivePrefabIndex(receivedPacket.prefabIndex.Count);// Inform the ClientSpawnManager about the received prefab index
+                    //Debug.Log("received index"+ receivedPacket.prefabIndex);
+                    Debug.Log("do you ever feel");
                 }
             }
-            catch
+            catch (System.Exception ex)
             {
-                Debug.Log("Client unable to connect wah wah");
+                Debug.LogException(ex);
             }
         }
 
@@ -118,23 +152,41 @@ public class Client : MonoBehaviour
 
         return gameObject;
     }
+
+    /*public void GetPositionIdexLocally(int currentPositionIndex)
+    {
+        BagInstantiatePacket bagInstantiatePacket = new BagInstantiatePacket(playerData,currentPositionIndex, null);
+        byte[] packetData = bagInstantiatePacket.Serialize();
+        Send(packetData);
+    }*/
     #endregion
 
     #region Destruction
     public void DestroyFromNetwork(DestroyPacket dp)
     {
-        ObjectID objectIDComponent = FindObjectOfType<ObjectID>();
-        if (objectIDComponent != null && objectIDComponent.objectID == dp.GameObjectID)
+        ObjectID[] objectIDs = FindObjectsOfType<ObjectID>();
+
+        foreach (ObjectID objectIDComponent in objectIDs)
         {
-            Destroy(objectIDComponent.gameObject);
+            if (objectIDComponent.objectID == dp.GameObjectID)
+            {
+                Destroy(objectIDComponent.gameObject);
+                return;
+            }
         }
     }
+
     public void DestroyLocally(string gameObjectID)
     {
-        ObjectID objectIDComponent = FindObjectOfType<ObjectID>();
-        if (objectIDComponent != null && objectIDComponent.objectID == gameObjectID)
+        ObjectID[] objectIDs = FindObjectsOfType<ObjectID>();
+
+        foreach (ObjectID objectIDComponent in objectIDs)
         {
-            Destroy(objectIDComponent.gameObject);
+            if (objectIDComponent.objectID == gameObjectID)
+            {
+                Destroy(objectIDComponent.gameObject);
+                return;
+            }
         }
     }
     #endregion

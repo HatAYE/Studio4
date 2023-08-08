@@ -54,6 +54,7 @@ public class BagReset : MonoBehaviour
                 {
                     Client.instance.DestroyLocally(objectID.objectID);
                     Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
+                    Debug.Log("should reset bag now");
                 }
             }
         }
