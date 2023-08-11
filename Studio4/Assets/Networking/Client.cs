@@ -1,4 +1,4 @@
-
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
@@ -112,8 +112,8 @@ public class Client : MonoBehaviour
                 else if (basePacket.packType == BasePacket.PackType.indexInstantiate)
                 {
                     BagInstantiatePacket receivedPacket = new BagInstantiatePacket().Deserialize(buffer);
-                    ClientSpawnManager.instance.ReceivePrefabIndex(receivedPacket.prefabIndex.Count);// Inform the ClientSpawnManager about the received prefab index
-                    //Debug.Log("received index"+ receivedPacket.prefabIndex);
+                    List<int> prefabIndexes = receivedPacket.prefabIndex;
+                    ClientSpawnManager.instance.ReceivePrefabIndexes(prefabIndexes); // Use ReceivePrefabIndexes method with the list
                     Debug.Log("do you ever feel");
                 }
             }

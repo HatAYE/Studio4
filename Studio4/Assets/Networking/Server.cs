@@ -3,18 +3,17 @@ using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
-using System.Collections;
+
 
 public class Server : MonoBehaviour
 {
     Socket serversocket;
     public List<Socket> clients = new List<Socket>();
-    public static Server instance;
     ServerSpawnManager spawnManager;
     int currentPrefabIndex = -1;
     PlayerData playerData;
     [SerializeField] List<int> listOfSpawners = new List<int>();
+
 
     void Start()
     {
@@ -27,49 +26,35 @@ public class Server : MonoBehaviour
         spawnManager = FindObjectOfType<ServerSpawnManager>();
         playerData = new PlayerData("1", "server");
 
-        
-    }
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        InvokeRepeating("IsAlive", 1, 1);
     }
 
-    private void Update()
+    void Update()
     {
         try
         {
             clients.Add(serversocket.Accept());
             Debug.Log("Client has connected");
-            if (currentPrefabIndex == -1)
-            {
-                // Generate a random prefab index once and send it to the connected clientfor
+            // Generate a random prefab index once and send it to the connected clientfor
             for (int i = 0; i < 17; i++)
             {
                 listOfSpawners.Add(spawnManager.GetRandomPrefabIndex());
             }
-                //currentPrefabIndex = spawnManager.GetRandomPrefabIndex();
-                string gameObjectID = Random.Range(0, 1000).ToString();
-                BagInstantiatePacket bagInstantiatePacket = new BagInstantiatePacket(playerData, listOfSpawners, gameObjectID);
-                byte[] packetData = bagInstantiatePacket.Serialize();
-                clients[clients.Count - 1].Send(packetData);
+            string gameObjectID = Random.Range(0, 1000).ToString();
+            BagInstantiatePacket bagInstantiatePacket = new BagInstantiatePacket(playerData, listOfSpawners, gameObjectID);
+            byte[] packetData = bagInstantiatePacket.Serialize();
+            clients[clients.Count - 1].Send(packetData);
+        }
+        catch (SocketException e)
+        {
+            if (e.SocketErrorCode != SocketError.WouldBlock)
+            {
+                Debug.Log(e);
             }
-            
         }
-        catch
+        for (int i = 0; i < clients.Count; i++)
         {
-            //print("Failed to accept connection");
-        }
-        try
-        {
-            for (int i = 0; i < clients.Count; i++)
+            try
             {
                 if (clients[i].Available > 0)
                 {
@@ -83,10 +68,40 @@ public class Server : MonoBehaviour
                     }
                 }
             }
-        }
-        catch
-        {
-
+            catch (SocketException e)
+            {
+                if (e.SocketErrorCode != SocketError.WouldBlock)
+                {
+                    Debug.Log(e);
+                }
+            }
         }
     }
+
+        void IsAlive()
+        {
+            for (int i = 0; i < clients.Count; i++)
+            {
+                try
+                {
+                    clients[i].Send(new byte[1]);
+                }
+                catch (SocketException e)
+                {
+                    if (e.SocketErrorCode != SocketError.WouldBlock)
+                    {
+                        if (e.SocketErrorCode == SocketError.ConnectionAborted || e.SocketErrorCode == SocketError.ConnectionReset)
+                        {
+                            Debug.Log("CLient Disconnected..");
+                            clients[i].Close();
+                            clients.RemoveAt(i);
+                        }
+                        else
+                            Debug.Log(e);
+                    }
+                }
+            }
+        }
+    
 }
+

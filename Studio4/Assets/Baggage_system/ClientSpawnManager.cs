@@ -20,32 +20,16 @@ public class ClientSpawnManager : MonoBehaviour
         }
     }
 
-    void Start()
+
+    public void ReceivePrefabIndexes(List<int> prefabIndexes)
     {
-        /*ObjectRandomizer[] bags = FindObjectsOfType<ObjectRandomizer>();
-        foreach (var bag in bags)
+        // Iterate through each registered bag and pass the prefab index
+        for (int i = 0; i < registeredBags.Count; i++)
         {
-            RegisterBag(bag);
-        }*/
-    }
-
-    public void RegisterBag(ObjectRandomizer randomizer)
-    {
-        registeredBags.Add(randomizer);
-    }
-
-    public void UnregisterBag(ObjectRandomizer randomizer)
-    {
-        registeredBags.Remove(randomizer);
-    }
-
-    // Method to receive the prefab index from the client and call the InstantiateItems method in each registered bag.
-    public void ReceivePrefabIndex(int prefabIndex)
-    {
-        foreach (var bag in registeredBags)
-        {
-            bag.InstantiateItems(prefabIndex);
+            int prefabIndex = prefabIndexes[i % prefabIndexes.Count]; // Get the current prefab index
+            registeredBags[i].InstantiateItems(prefabIndex);
             Debug.Log("like a plastic bag");
         }
     }
+
 }
