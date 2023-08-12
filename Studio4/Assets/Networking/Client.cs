@@ -113,7 +113,8 @@ public class Client : MonoBehaviour
                 {
                     BagInstantiatePacket receivedPacket = new BagInstantiatePacket().Deserialize(buffer);
                     List<int> prefabIndexes = receivedPacket.prefabIndex;
-                    ClientSpawnManager.instance.ReceivePrefabIndexes(prefabIndexes); // Use ReceivePrefabIndexes method with the list
+                    List<string> objectIDS = receivedPacket.objectIDs;
+                    ClientSpawnManager.instance.ReceivePrefabIndexes(prefabIndexes, objectIDS); // Use ReceivePrefabIndexes method with the list
                     Debug.Log("do you ever feel");
                 }
             }

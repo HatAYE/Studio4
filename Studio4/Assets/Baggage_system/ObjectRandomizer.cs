@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -31,12 +32,20 @@ public class ObjectRandomizer : MonoBehaviour
             gotInstantiated = false;
     }
 
-    public void InstantiateItems(int prefabIndexes)
+    public void InstantiateItems(int prefabIndexes, string objectID)
     {
-            GameObject prefabToInstantiate = Resources.Load<GameObject>(bagObjects[prefabIndexes]);
-            GameObject instantiatedObject = Instantiate(prefabToInstantiate, transform.position, Quaternion.identity);
-            instantiatedObject.transform.parent = parentObject.transform;
-            gotInstantiated = true;
+        GameObject prefabToInstantiate = Resources.Load<GameObject>(bagObjects[prefabIndexes]);
+        GameObject instantiatedObject = Instantiate(prefabToInstantiate, transform.position, Quaternion.identity);
+
+        ObjectID objectIDComponent = instantiatedObject.GetComponent<ObjectID>();
+        if (objectIDComponent != null)
+        {
+            objectIDComponent.ownerID = Client.instance.playerData.playerID;
+            objectIDComponent.objectID = objectID;
+        }
+
+        instantiatedObject.transform.parent = parentObject.transform;
+        gotInstantiated = true;
     }
 
 }

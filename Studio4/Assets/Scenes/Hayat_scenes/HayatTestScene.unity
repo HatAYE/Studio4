@@ -623,6 +623,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 95740221}
 --- !u!61 &95740223
 BoxCollider2D:
@@ -1189,6 +1190,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 209651687}
 --- !u!1 &297431439
 GameObject:
@@ -1275,6 +1277,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 297431439}
 --- !u!1 &311543664
 GameObject:
@@ -1335,6 +1338,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 311543664}
 --- !u!61 &311543667
 BoxCollider2D:
@@ -1702,6 +1706,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 436382979}
 --- !u!1 &477175324
 GameObject:
@@ -1858,6 +1863,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 538770821}
 --- !u!1 &661111007
 GameObject:
@@ -2099,6 +2105,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 714804242}
 --- !u!61 &714804244
 BoxCollider2D:
@@ -3026,6 +3033,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 942768074}
 --- !u!61 &942768077
 BoxCollider2D:
@@ -3334,6 +3342,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 1066169856}
 --- !u!1 &1097791019
 GameObject:
@@ -3420,6 +3429,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 1097791019}
 --- !u!1 &1108435214
 GameObject:
@@ -3465,6 +3475,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 1108435214}
 --- !u!61 &1108435216
 BoxCollider2D:
@@ -4251,6 +4262,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 1317745072}
 --- !u!1 &1322369858
 GameObject:
@@ -5520,6 +5532,9 @@ MonoBehaviour:
   - {fileID: 1066169860}
   - {fileID: 297431443}
   - {fileID: 436382983}
+  - {fileID: 942768076}
+  - {fileID: 311543666}
+  - {fileID: 2082219767}
   resetPoint: {fileID: 1322369858}
   startPoint: {fileID: 1819057264}
 --- !u!61 &1786938326
@@ -5834,6 +5849,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 1886080891}
 --- !u!1 &1891239909
 GameObject:
@@ -6325,6 +6341,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 1970493259}
 --- !u!1 &1983903275
 GameObject:
@@ -6898,6 +6915,7 @@ MonoBehaviour:
   - Bag_prefabs/pillow
   - Bag_prefabs/Shirt
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 2082219765}
 --- !u!61 &2082219768
 BoxCollider2D:
@@ -7103,6 +7121,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 2125154613}
 --- !u!1 &2142488100
 GameObject:
@@ -7148,6 +7167,7 @@ MonoBehaviour:
   - Bag_prefabs/safe_item
   - Bag_prefabs/safe_item
   bagmovement: {fileID: 0}
+  gotInstantiated: 0
   parentObject: {fileID: 2142488100}
 --- !u!61 &2142488102
 BoxCollider2D:

@@ -12,7 +12,8 @@ public class Server : MonoBehaviour
     ServerSpawnManager spawnManager;
     int currentPrefabIndex = -1;
     PlayerData playerData;
-    [SerializeField] List<int> listOfSpawners = new List<int>();
+    List<int> listOfSpawners = new List<int>();
+    List<string> objectIDS = new List<string>();
 
 
     void Start()
@@ -39,9 +40,9 @@ public class Server : MonoBehaviour
             for (int i = 0; i < 17; i++)
             {
                 listOfSpawners.Add(spawnManager.GetRandomPrefabIndex());
+                objectIDS.Add(Random.Range(1,1000).ToString());
             }
-            string gameObjectID = Random.Range(0, 1000).ToString();
-            BagInstantiatePacket bagInstantiatePacket = new BagInstantiatePacket(playerData, listOfSpawners, gameObjectID);
+            BagInstantiatePacket bagInstantiatePacket = new BagInstantiatePacket(playerData, listOfSpawners, objectIDS, "");
             byte[] packetData = bagInstantiatePacket.Serialize();
             clients[clients.Count - 1].Send(packetData);
         }
