@@ -12,13 +12,28 @@ public class BagMovement : MonoBehaviour
     [SerializeField] PointSystem pointSystem;
     public int currentPositionIndex;
     public bool isMoving;
-    bool initialMove=true;
+    bool initialMove = true;
     public bool rejecting;
     ObjectID ID;
     private void Start()
     {
         ID = GetComponent<ObjectID>();
-        //Client.instance.UpdateNetworkEvent += SendMovement;
+        instance.UpdateNetworkEvent += UpdateMovement;
+        //ID.GenerateGameObjectIDToSelf();
+    }
+
+    void UpdateMovement(Vector3 pos, int posIndex)
+    {
+        transform.position = pos;
+        currentPositionIndex = posIndex;
+    }
+
+    void SendPacket()
+    {
+        if (instance != null)
+        {
+            instance.Send(new MovementPacket(instance.playerData, transform.position, currentPositionIndex, ID.objectID).Serialize());
+        }
     }
     private void Update()
     {
@@ -30,13 +45,6 @@ public class BagMovement : MonoBehaviour
         else if (currentPositionIndex>0)
             initialMove = true;
     }
-    /*private void SendMovement()
-    {
-        if (isMoving==true)
-        {
-            instance.Send(new MovementPacket(instance.playerData, ID.objectID, transform.position).Serialize());
-        }
-    }*/
 
     private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float moveSpeed)
     {
@@ -45,6 +53,7 @@ public class BagMovement : MonoBehaviour
         while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            SendPacket();
             if (rejectButton != null)
             rejectButton.SetActive(false);
             acceptButton.SetActive(false);
@@ -57,7 +66,6 @@ public class BagMovement : MonoBehaviour
         currentPositionIndex++;
         pointSystem.ItemCheck();
         rejecting = false;
-        //Client.instance.GetPositionIdexLocally(currentPositionIndex);
     }
     public void MoveToPosition()
     {
@@ -66,6 +74,7 @@ public class BagMovement : MonoBehaviour
             Vector3 targetPosition = bagPositions[currentPositionIndex].transform.position;
             rejecting = true;
             StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
+            
         }
         
     }

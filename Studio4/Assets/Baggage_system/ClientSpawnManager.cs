@@ -20,7 +20,6 @@ public class ClientSpawnManager : MonoBehaviour
         }
     }
 
-
     public void ReceivePrefabIndexes(List<int> prefabIndexes, List<string> ID)
     {
         // Iterate through each registered bag and pass the prefab index
@@ -29,8 +28,7 @@ public class ClientSpawnManager : MonoBehaviour
             int prefabIndex = prefabIndexes[i % prefabIndexes.Count]; // Get the current prefab index
             string objectID = ID[i];
             registeredBags[i].InstantiateItems(prefabIndex, objectID);
-            Debug.Log("like a plastic bag");
         }
+        Debug.Log("TWO");
     }
-
 }

@@ -6,30 +6,23 @@ using UnityEngine;
 
 public class ObjectRandomizer : MonoBehaviour
 {
-    ClientSpawnManager clientManager;
     [SerializeField] List<string> bagObjects = new List<string>();
     public BagMovement bagmovement;
     [SerializeField] bool gotInstantiated = false;
-    //[SerializeField] bool canBeInstantiated;
     [SerializeField] GameObject parentObject;
+    ObjectID ID;
     private void Start()
     {
         bagmovement= transform.parent.GetComponent<BagMovement>();
-        //clientManager = FindObjectOfType<ClientSpawnManager>();
-        //clientManager.RegisterBag(this);
+        ID=GetComponent<ObjectID>();
     }
     private void Update()
     {
-        if (bagmovement.currentPositionIndex == 0)
+        /*if (bagmovement.currentPositionIndex == 0 && !gotInstantiated)
         {
-            if (!gotInstantiated)
-            {
-                //ClientSpawnManager.instance.ReInstantiateItems();
-                gotInstantiated = true;
-            }
         }
-        else
-            gotInstantiated = false;
+        else gotInstantiated = false;*/
+        gotInstantiated = false;
     }
 
     public void InstantiateItems(int prefabIndexes, string objectID)

@@ -4,17 +4,34 @@ using System.Net;
 using UnityEngine;
 using System.Collections.Generic;
 
-
 public class Server : MonoBehaviour
 {
+    public delegate void ClientConnected(int totalClients);
+    public ClientConnected ClientConnectedEvent;
+
+    public delegate void ReceivedPacket(byte[] buffer);
+    public ReceivedPacket ReceivedPacketEvent;
+
     Socket serversocket;
     public List<Socket> clients = new List<Socket>();
-    ServerSpawnManager spawnManager;
-    int currentPrefabIndex = -1;
-    PlayerData playerData;
-    List<int> listOfSpawners = new List<int>();
-    List<string> objectIDS = new List<string>();
 
+    public PlayerData playerData;
+    public static byte HEARTBEAT { get { return 176; } }
+
+    public static Server instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -24,9 +41,7 @@ public class Server : MonoBehaviour
         serversocket.Listen(10);
         serversocket.Blocking = false;
 
-        spawnManager = FindObjectOfType<ServerSpawnManager>();
         playerData = new PlayerData("1", "server");
-
         InvokeRepeating("IsAlive", 1, 1);
     }
 
@@ -36,15 +51,9 @@ public class Server : MonoBehaviour
         {
             clients.Add(serversocket.Accept());
             Debug.Log("Client has connected");
-            // Generate a random prefab index once and send it to the connected clientfor
-            for (int i = 0; i < 17; i++)
-            {
-                listOfSpawners.Add(spawnManager.GetRandomPrefabIndex());
-                objectIDS.Add(Random.Range(1,1000).ToString());
-            }
-            BagInstantiatePacket bagInstantiatePacket = new BagInstantiatePacket(playerData, listOfSpawners, objectIDS, "");
-            byte[] packetData = bagInstantiatePacket.Serialize();
-            clients[clients.Count - 1].Send(packetData);
+
+            if (ClientConnectedEvent != null)
+                ClientConnectedEvent(clients.Count);
         }
         catch (SocketException e)
         {
@@ -53,6 +62,7 @@ public class Server : MonoBehaviour
                 Debug.Log(e);
             }
         }
+
         for (int i = 0; i < clients.Count; i++)
         {
             try
@@ -61,6 +71,9 @@ public class Server : MonoBehaviour
                 {
                     byte[] buffer = new byte[clients[i].Available];
                     clients[i].Receive(buffer);
+
+                    if(ReceivedPacketEvent != null)
+                        ReceivedPacketEvent(buffer);
 
                     for (int j = 0; j < clients.Count; j++)
                     {
@@ -79,30 +92,38 @@ public class Server : MonoBehaviour
         }
     }
 
-        void IsAlive()
+    public void SendToAllClients(byte[] buffer)
+    {
+        //Debug.LogError($"Sending {buffer.Length}");
+
+        for (int i = 0; i < clients.Count; i++)
         {
-            for (int i = 0; i < clients.Count; i++)
+            clients[i].Send(buffer);
+        }
+    }
+
+    void IsAlive()
+    {
+        for (int i = 0; i < clients.Count; i++)
+        {
+            try
             {
-                try
+                clients[i].Send(new byte[1] { HEARTBEAT });
+            }
+            catch (SocketException e)
+            {
+                if (e.SocketErrorCode != SocketError.WouldBlock)
                 {
-                    clients[i].Send(new byte[1]);
-                }
-                catch (SocketException e)
-                {
-                    if (e.SocketErrorCode != SocketError.WouldBlock)
+                    if (e.SocketErrorCode == SocketError.ConnectionAborted || e.SocketErrorCode == SocketError.ConnectionReset)
                     {
-                        if (e.SocketErrorCode == SocketError.ConnectionAborted || e.SocketErrorCode == SocketError.ConnectionReset)
-                        {
-                            Debug.Log("CLient Disconnected..");
-                            clients[i].Close();
-                            clients.RemoveAt(i);
-                        }
-                        else
-                            Debug.Log(e);
+                        Debug.Log("CLient Disconnected..");
+                        clients[i].Close();
+                        clients.RemoveAt(i);
                     }
+                    else
+                        Debug.Log(e);
                 }
             }
         }
-    
+    }
 }
-

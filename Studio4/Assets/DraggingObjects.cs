@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class DraggingObjects : MonoBehaviour
 {
     bool isDragging = false;
     Vector3 offset;
     BoxCollider2D restrains;
+    ObjectID ID;
     private void Start()
     {
         restrains = transform.parent.transform.parent.GetComponent<BoxCollider2D>();
+        ID= GetComponent<ObjectID>();
     }
     private void Update()
     {
@@ -25,6 +26,7 @@ public class DraggingObjects : MonoBehaviour
                 offset = transform.position - mousePosition;
                 isDragging = true;
             }
+            //Client.instance.Send(new MovementPacket(Client.instance.playerData, transform.position, ID.objectID).Serialize());
         }
 
         if (isDragging && Input.GetMouseButton(0))

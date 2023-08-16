@@ -1,26 +1,30 @@
 
 using System.IO;
-using System.Net;
 
 public class BasePacket
 {
     protected MemoryStream writeStream;
     protected BinaryWriter writer;
+
     protected MemoryStream readStream;
     protected BinaryReader reader;
+
     public PlayerData player { get; private set; }
     public string GameObjectID;
     public enum PackType
     {
-        none, instantiate, destroy, animation, movement, score, indexInstantiate
+        none, instantiate, destroy, animation, movement, score, indexInstantiate, reset
     }
+
     public PackType packType { get; private set; }
+
     public BasePacket()
     {
         player = new PlayerData("", "");
         GameObjectID = "";
         packType = PackType.none;
     }
+
     protected BasePacket(PlayerData player, PackType packType, string GameObjectID)
     {
         this.player = player;
@@ -45,7 +49,6 @@ public class BasePacket
         return writeStream.ToArray();
     }
 
-
     public BasePacket Deserialize(byte[] buffer)
     {
         readStream = new MemoryStream(buffer);
@@ -58,5 +61,4 @@ public class BasePacket
 
         return this;
     }
-
 }

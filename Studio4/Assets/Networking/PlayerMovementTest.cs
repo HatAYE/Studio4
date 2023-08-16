@@ -14,20 +14,20 @@ public class PlayerMovementTest : MonoBehaviour
     void Start()
     {
         ID = GetComponent<ObjectID>();
-        Client.instance.UpdateNetworkEvent += OnUpdateNetwork;
+        //Client.instance.UpdateNetworkEvent += OnUpdateNetwork;
     }
 
-    private void OnUpdateNetwork()
+   /* private void OnUpdateNetwork()
     {
         if (playerMoved)
         {
-            Client.instance.Send(new MovementPacket(Client.instance.playerData, ID.objectID, transform.position).Serialize());
+            Client.instance.Send(new MovementPacket(Client.instance.playerData, transform.position, ID.objectID).Serialize());
         }
-    }
+    }*/
 
     void Update()
     {
-        #region destroying
+       /* #region destroying
         if (Input.GetMouseButtonDown(0))
         {
             // Cast a ray from the mouse position into the scene
@@ -88,6 +88,6 @@ public class PlayerMovementTest : MonoBehaviour
             Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize()) ;
         }
         scoreText.text = Client.totalScore.ToString();
-        #endregion
+        #endregion*/
     }
 }

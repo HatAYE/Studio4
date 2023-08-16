@@ -9,9 +9,12 @@ public class BagReset : MonoBehaviour
     [SerializeField] GameObject resetPoint;
     [SerializeField] GameObject startPoint;
     BagMovement bagMovement;
+    ObjectID ID;
+    bool sendPacket;
     void Start()
     {
         bagMovement = GetComponent<BagMovement>();
+        ID=GetComponent<ObjectID>();
     }
 
     // Update is called once per frame
@@ -20,6 +23,14 @@ public class BagReset : MonoBehaviour
         //Debug.Log("position index:" + bagMovement.currentPositionIndex);
 
         StartCoroutine(ActivateReset());
+        if (sendPacket)
+        {
+            ResetPacket resetPacket = new ResetPacket(Client.instance.playerData, ID.objectID);
+            byte[] packetData = resetPacket.Serialize();
+            //Client.instance.Send(packetData);
+            sendPacket = false;
+            Debug.Log("wewoo");
+        }
     }
     IEnumerator ActivateReset()
     {
@@ -37,7 +48,7 @@ public class BagReset : MonoBehaviour
             transform.position = startPoint.transform.position;
             bagMovement.currentPositionIndex = 0;
             DestroyGameobjects(transform);
-            //destroy children of item positions
+            sendPacket= true;
         }
     }
 
@@ -53,8 +64,7 @@ public class BagReset : MonoBehaviour
                 if (objectID != null)
                 {
                     Client.instance.DestroyLocally(objectID.objectID);
-                    Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
-                    Debug.Log("should reset bag now");
+                    //Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
                 }
             }
         }

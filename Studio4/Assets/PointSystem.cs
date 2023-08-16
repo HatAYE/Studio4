@@ -40,7 +40,7 @@ public class PointSystem : MonoBehaviour
                             if (bagMovement.rejecting == false)
                             {
                                 Client.instance.CalculatePointsLocally(itemPointValue);
-                                Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
+                                //Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
                             }
 
                             //return;
@@ -52,7 +52,7 @@ public class PointSystem : MonoBehaviour
                             if (illegalItemsList.Count == 0 && bagMovement.rejecting==false)
                             {
                                 Client.instance.CalculatePointsLocally(50);
-                                Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
+                                //Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
                                 return;
                             }
                         }
@@ -87,7 +87,7 @@ public class PointSystem : MonoBehaviour
                     {
                         string objectID = objectIDComponent.objectID;
                         Client.instance.DestroyLocally(objectID);
-                        Client.instance.Send(new DestroyPacket(Client.instance.playerData, objectID).Serialize());
+                        //Client.instance.Send(new DestroyPacket(Client.instance.playerData, objectID).Serialize());
                         Debug.Log("destroying");
 
                     }
@@ -95,7 +95,7 @@ public class PointSystem : MonoBehaviour
                 else if (hit.collider.gameObject.GetComponent<ItemType>().illegalItem == false)
                 {
                     Client.instance.CalculatePointsLocally(-50);
-                    Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
+                    //Client.instance.Send(new ScorePacket(Client.instance.playerData, ID.objectID, Client.totalScore).Serialize());
                 }
             }
         }
