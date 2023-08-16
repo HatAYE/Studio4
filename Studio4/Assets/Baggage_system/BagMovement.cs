@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static Client;
 
 public class BagMovement : MonoBehaviour
@@ -15,17 +16,28 @@ public class BagMovement : MonoBehaviour
     bool initialMove = true;
     public bool rejecting;
     ObjectID ID;
+
+    const float tickRate = (1000.0f / 15.0f) / 1000.0f;
+    float timer;
+    float ZPosition= 0.80f;
     private void Start()
     {
         ID = GetComponent<ObjectID>();
         instance.UpdateNetworkEvent += UpdateMovement;
-        //ID.GenerateGameObjectIDToSelf();
     }
 
     void UpdateMovement(Vector3 pos, int posIndex)
     {
-        transform.position = pos;
-        currentPositionIndex = posIndex;
+        timer += Time.deltaTime;
+
+        if (timer >= tickRate)
+        {
+            //Vector3 newPosition = new Vector3(pos.x, pos.y, transform.position.z);
+            transform.position = pos;
+            currentPositionIndex = posIndex;
+            timer = 0;
+        }
+        
     }
 
     void SendPacket()
@@ -72,6 +84,7 @@ public class BagMovement : MonoBehaviour
         if (currentPositionIndex < bagPositions.Count)
         {
             Vector3 targetPosition = bagPositions[currentPositionIndex].transform.position;
+
             rejecting = true;
             StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
             
@@ -84,6 +97,7 @@ public class BagMovement : MonoBehaviour
         if (!isMoving && currentPositionIndex < 3)
         {
             Vector3 targetPosition = bagPositions[bagPositions.Count - 1].transform.position;
+
             currentPositionIndex = bagPositions.Count - 1;
             StartCoroutine(MoveToPositionCoroutine(targetPosition, speed));
         }

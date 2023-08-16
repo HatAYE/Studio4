@@ -11,6 +11,7 @@ public class ObjectRandomizer : MonoBehaviour
     [SerializeField] bool gotInstantiated = false;
     [SerializeField] GameObject parentObject;
     ObjectID ID;
+    float ZAxis = -0.40f;
     private void Start()
     {
         bagmovement= transform.parent.GetComponent<BagMovement>();
@@ -28,7 +29,7 @@ public class ObjectRandomizer : MonoBehaviour
     public void InstantiateItems(int prefabIndexes, string objectID)
     {
         GameObject prefabToInstantiate = Resources.Load<GameObject>(bagObjects[prefabIndexes]);
-        GameObject instantiatedObject = Instantiate(prefabToInstantiate, transform.position, Quaternion.identity);
+        GameObject instantiatedObject = Instantiate(prefabToInstantiate, new Vector3(transform.position.x, transform.position.y, ZAxis), Quaternion.identity);
 
         ObjectID objectIDComponent = instantiatedObject.GetComponent<ObjectID>();
         if (objectIDComponent != null)

@@ -15,8 +15,7 @@ public class Client : MonoBehaviour
 
 
 
-    const float tickRate = (1000.0f / 15.0f) / 1000.0f;
-    float timer;
+    
 
     private void Awake()
     {
@@ -47,13 +46,7 @@ public class Client : MonoBehaviour
 
     void Update()
     {
-        /*timer += Time.deltaTime;
-
-        if (timer >= tickRate)
-        {
-            UpdateNetworkEvent();
-            timer = 0;
-        }*/
+        
 
         if (socket.Available > 0)
         {
@@ -61,40 +54,6 @@ public class Client : MonoBehaviour
             {
                 byte[] buffer = new byte[socket.Available];
                 socket.Receive(buffer);
-
-                /*
-                int start = -1;
-                int end = -1;
-
-                for (int i = 0; i < buffer.Length; i++)
-                {
-                    if (buffer[i] == 83 &&
-                        buffer[i + 1] == 84 &&
-                        buffer[i + 2] == 65 &&
-                        buffer[i + 3] == 82 &&
-                        buffer[i + 4] == 84)
-                    {
-                        start = i + 4;
-                        Debug.LogError($"start {start}");
-                    }
-                    else if (buffer[i] == 69 &&
-                        buffer[i + 1] == 78 &&
-                        buffer[i + 2] == 68)
-                    {
-                        end = i + 2;
-                        Debug.LogError($"end {end}");
-                    }
-                }*/
-
-                /*Debug.LogError("A---------");
-                string bfuferr = "";
-
-                for (int i = 0; i < buffer.Length; i++)
-                {
-                    bfuferr += " " + buffer[i].ToString();
-                }
-                Debug.LogError(bfuferr);
-                Debug.LogError("B---------");*/
 
                 if (buffer[0] == Server.HEARTBEAT)
                     return;
@@ -121,7 +80,6 @@ public class Client : MonoBehaviour
                         if (id.objectID== mp.GameObjectID)
                         {
                             id.transform.position = mp.position;
-
                         }
                     }
                 }
