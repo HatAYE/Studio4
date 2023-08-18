@@ -10,12 +10,8 @@ public class Client : MonoBehaviour
     public PlayerData playerData;
     public static int totalScore;
 
-    public delegate void UpdateNetwork(Vector3 pos, int posIndex);
+    public delegate void UpdateNetwork(Vector3 pos, int posIndex, string eventObjectID);
     public UpdateNetwork UpdateNetworkEvent;
-
-
-
-    
 
     private void Awake()
     {
@@ -46,8 +42,6 @@ public class Client : MonoBehaviour
 
     void Update()
     {
-        
-
         if (socket.Available > 0)
         {
             try
@@ -90,12 +84,10 @@ public class Client : MonoBehaviour
                 }
                 else if (basePacket.packType == BasePacket.PackType.indexInstantiate)
                 {
-                    Debug.LogError("indexInstantiate start");
                     BagInstantiatePacket receivedPacket = new BagInstantiatePacket().Deserialize(buffer);
                     List<int> prefabIndexes = receivedPacket.prefabIndex;
                     List<string> objectIDS = receivedPacket.objectIDs;
                     ClientSpawnManager.instance.ReceivePrefabIndexes(prefabIndexes, objectIDS); // Use ReceivePrefabIndexes method with the list
-                    Debug.LogError("indexInstantiate end");
                 }
             }
             catch (System.Exception ex)
@@ -143,7 +135,6 @@ public class Client : MonoBehaviour
             if (objectIDComponent.objectID == dp.GameObjectID)
             {
                 Destroy(objectIDComponent.gameObject);
-                return;
             }
         }
     }

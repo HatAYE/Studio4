@@ -610,18 +610,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Waist/BellyDanceBelt
+  - People_items/Waist/BellyDanceBelt
+  - People_items/Waist/belt
+  - People_items/Waist/belt
+  - People_items/Waist/cummerbunds
+  - People_items/Waist/cummerbunds
+  - People_items/Waist/fannyPack
+  - People_items/Waist/fannyPack
+  - People_items/Waist/gunHolster
+  - People_items/Waist/gunHolster
+  - People_items/Waist/toolBelt
+  - People_items/Waist/toolBelt
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 95740221}
@@ -839,7 +839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140730739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1146,7 +1146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209651687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.086567, y: 0.023375, z: -0.14}
+  m_LocalPosition: {x: -0.086567, y: 0.023375, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1248,7 +1248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297431439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00016740164, y: -0.028159, z: -0.13999999}
+  m_LocalPosition: {x: 0.00016740164, y: -0.028159, z: 1}
   m_LocalScale: {x: 0.9001005, y: 0.9001005, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1350,7 +1350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311543664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0040371, y: -0.080897, z: -0.14}
+  m_LocalPosition: {x: -0.0040371, y: -0.080897, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1512,7 +1512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398809006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45, y: -1.22, z: 0}
+  m_LocalPosition: {x: 45, y: -1.62, z: 0}
   m_LocalScale: {x: 2.9375, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1707,7 +1707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436382979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07909, y: -0.02708, z: -0.14}
+  m_LocalPosition: {x: 0.07909, y: -0.02708, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1806,7 +1806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477175324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.96, y: -1.22, z: 0.95821}
+  m_LocalPosition: {x: 29.96, y: -1.62, z: 0.95821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1879,8 +1879,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538770821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.73, y: 1.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.006, y: -0.022, z: 0}
+  m_LocalScale: {x: 0.026653105, y: 0.020322993, z: 0.026653105}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858546557}
@@ -1925,18 +1925,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Hands/bangles
+  - People_items/Hands/bangles
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/watch
+  - People_items/Hands/watch
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/bracelete
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 538770821}
@@ -2182,18 +2182,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Hands/bangles
+  - People_items/Hands/bangles
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/watch
+  - People_items/Hands/watch
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/bracelete
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 714804242}
@@ -2364,7 +2364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &858546557
 Transform:
   m_ObjectHideFlags: 0
@@ -2373,8 +2373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858546556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.18, y: -1.22, z: 0.95821}
-  m_LocalScale: {x: 0.27527946, y: 0.27527946, z: 0.27527946}
+  m_LocalPosition: {x: 38.18, y: -1.62, z: 0.95821}
+  m_LocalScale: {x: 12.117651, y: 12.117651, z: 12.117651}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1886080892}
@@ -2423,7 +2423,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.24, y: 20.48}
+    oldSize: {x: 0.2, y: 0.39}
     newSize: {x: 19.24, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2472,6 +2472,7 @@ MonoBehaviour:
   - {fileID: 2125154616}
   resetPoint: {fileID: 398809006}
   startPoint: {fileID: 1051824867}
+  timerToRespawn: 0
 --- !u!212 &858546562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2513,7 +2514,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: aa4e9286497ea074f8b7820f150b35f7, type: 3}
+  m_Sprite: {fileID: 65917072, guid: c27216a2f48ebfb48b966df7e53df998, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2537,7 +2538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerID: 
-  objectID: 
+  objectID: 3
 --- !u!1 &864260211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,7 +2564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864260211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45, y: -1.22, z: 0}
+  m_LocalPosition: {x: 45, y: -1.62, z: 0}
   m_LocalScale: {x: 2.9375, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2752,7 +2753,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3105,7 +3106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942768074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.077408, y: -0.081738, z: -0.14}
+  m_LocalPosition: {x: 0.077408, y: -0.081738, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3369,7 +3370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051824867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.95, y: -1.22, z: 1}
+  m_LocalPosition: {x: 18.95, y: -1.62, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3403,7 +3404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066169856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08909, y: -0.026883, z: -0.14}
+  m_LocalPosition: {x: -0.08909, y: -0.026883, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3505,7 +3506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097791019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07909, y: 0.022534, z: -0.14}
+  m_LocalPosition: {x: 0.07909, y: 0.022534, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3612,18 +3613,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Hands/bangles
+  - People_items/Hands/bangles
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/watch
+  - People_items/Hands/watch
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/bracelete
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 1108435214}
@@ -3894,7 +3895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137294655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.57}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4369,7 +4370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317745072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0045131, y: 0.026738, z: -0.14}
+  m_LocalPosition: {x: -0.0045131, y: 0.026738, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4496,7 +4497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322369858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.713397, y: -0.4, z: 1.02}
+  m_LocalPosition: {x: 14.713397, y: -0.4, z: 0}
   m_LocalScale: {x: 2.9375, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4541,7 +4542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391852976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4366035, y: -2.2, z: 1.02}
+  m_LocalPosition: {x: -7.4366035, y: -2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4760,7 +4761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432305324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6466036, y: 0, z: -0.57}
+  m_LocalPosition: {x: 2.6466036, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4959,7 +4960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525726862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35, y: -1.22, z: 0.95821}
+  m_LocalPosition: {x: 35, y: -1.62, z: 0.95821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5127,7 +5128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568687474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.983396, y: -2.2, z: 1.02}
+  m_LocalPosition: {x: 14.983396, y: -2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5580,7 +5581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762766652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56, y: -2.2, z: 1.02}
+  m_LocalPosition: {x: -0.56, y: -2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5669,7 +5670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786938321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.1, y: -1.73, z: 0.81}
+  m_LocalPosition: {x: -12.1, y: -1.73, z: 8.37}
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5732,6 +5733,7 @@ MonoBehaviour:
   - {fileID: 2082219767}
   resetPoint: {fileID: 1322369858}
   startPoint: {fileID: 1819057264}
+  timerToRespawn: 0
 --- !u!61 &1786938326
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5792,7 +5794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerID: 
-  objectID: 
+  objectID: 1
 --- !u!1 &1819057264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5817,7 +5819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819057264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.746604, y: -2.2, z: 1.02}
+  m_LocalPosition: {x: -14.746604, y: -2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5986,8 +5988,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886080891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.022, y: 0.044, z: 0}
+  m_LocalScale: {x: 0.015414632, y: 0.015414632, z: 0.015414632}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858546557}
@@ -6032,18 +6034,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Neck/bandana
+  - People_items/Neck/necklace
+  - People_items/Neck/necklace1
+  - People_items/Neck/scarf
+  - People_items/Neck/Stethoscope
+  - People_items/Neck/tie
+  - People_items/Neck/whistle
+  - People_items/Neck/whistle
+  - People_items/Neck/scarf
+  - People_items/Neck/necklace
+  - People_items/Neck/Stethoscope
+  - People_items/Neck/tie
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 1886080891}
@@ -6579,7 +6581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965911522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.95, y: -1.22, z: 1}
+  m_LocalPosition: {x: 18.95, y: -1.62, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6613,8 +6615,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970493259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.08, y: 1.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.11, y: -0.019, z: 0}
+  m_LocalScale: {x: 0.031039756, y: 0.022484424, z: 0.031039756}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858546557}
@@ -6659,18 +6661,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Hands/bangles
+  - People_items/Hands/bangles
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/watch
+  - People_items/Hands/watch
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/wrist_band
+  - People_items/Hands/beaded_bracelete
+  - People_items/Hands/bracelete
+  - People_items/Hands/bracelete
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 1970493259}
@@ -6748,7 +6750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1989767385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6820,6 +6822,7 @@ MonoBehaviour:
   - {fileID: 95740222}
   resetPoint: {fileID: 864260211}
   startPoint: {fileID: 1965911522}
+  timerToRespawn: 0
 --- !u!61 &1989767387
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6897,7 +6900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989767384}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.01, y: -1.54, z: 0.95821}
+  m_LocalPosition: {x: 33.01, y: -1.62, z: 0.95821}
   m_LocalScale: {x: 115.5465, y: 115.5465, z: 115.5465}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6921,7 +6924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerID: 
-  objectID: 
+  objectID: 2
 --- !u!1 &1994646020
 GameObject:
   m_ObjectHideFlags: 0
@@ -7132,7 +7135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032795933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.9757, y: -4.7, z: 1.18}
+  m_LocalPosition: {x: 19.9757, y: -4.7, z: 10}
   m_LocalScale: {x: 59.946922, y: 1.6887499, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7228,7 +7231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082219765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.084886, y: -0.080897, z: -0.14}
+  m_LocalPosition: {x: -0.084886, y: -0.080897, z: 1}
   m_LocalScale: {x: 0.90010047, y: 0.90010047, z: 4.352718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7343,10 +7346,10 @@ MonoBehaviour:
   - {fileID: 311543666}
   - {fileID: 2082219767}
   - {fileID: 2142488101}
+  - {fileID: 1886080894}
   - {fileID: 1108435215}
   - {fileID: 714804243}
   - {fileID: 95740222}
-  - {fileID: 1886080894}
   - {fileID: 538770824}
   - {fileID: 1970493262}
   - {fileID: 2125154616}
@@ -7389,7 +7392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121733090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45, y: -1.22, z: 0.95821}
+  m_LocalPosition: {x: 45, y: -1.62, z: 0.95821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7423,8 +7426,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125154613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.02, y: 1.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.047, y: -0.027, z: 0}
+  m_LocalScale: {x: 0.023704326, y: 0.023704326, z: 0.023704326}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858546557}
@@ -7469,18 +7472,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Waist/BellyDanceBelt
+  - People_items/Waist/BellyDanceBelt
+  - People_items/Waist/belt
+  - People_items/Waist/belt
+  - People_items/Waist/cummerbunds
+  - People_items/Waist/cummerbunds
+  - People_items/Waist/fannyPack
+  - People_items/Waist/fannyPack
+  - People_items/Waist/gunHolster
+  - People_items/Waist/gunHolster
+  - People_items/Waist/toolBelt
+  - People_items/Waist/toolBelt
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 2125154613}
@@ -7530,18 +7533,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagObjects:
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
-  - Bag_prefabs/safe_item
+  - People_items/Neck/bandana
+  - People_items/Neck/necklace
+  - People_items/Neck/necklace1
+  - People_items/Neck/scarf
+  - People_items/Neck/Stethoscope
+  - People_items/Neck/tie
+  - People_items/Neck/whistle
+  - People_items/Neck/whistle
+  - People_items/Neck/scarf
+  - People_items/Neck/necklace
+  - People_items/Neck/Stethoscope
+  - People_items/Neck/tie
   bagmovement: {fileID: 0}
   gotInstantiated: 0
   parentObject: {fileID: 2142488100}

@@ -29,6 +29,5 @@ public class ClientSpawnManager : MonoBehaviour
             string objectID = ID[i];
             registeredBags[i].InstantiateItems(prefabIndex, objectID);
         }
-        Debug.Log("TWO");
     }
 }

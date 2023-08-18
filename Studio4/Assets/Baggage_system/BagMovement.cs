@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,27 +20,32 @@ public class BagMovement : MonoBehaviour
 
     const float tickRate = (1000.0f / 15.0f) / 1000.0f;
     float timer;
-    float ZPosition= 0.80f;
     private void Start()
     {
         ID = GetComponent<ObjectID>();
         instance.UpdateNetworkEvent += UpdateMovement;
     }
 
-    void UpdateMovement(Vector3 pos, int posIndex)
+    void UpdateMovement(Vector3 pos, int posIndex, string eventObjectID)
     {
         timer += Time.deltaTime;
 
         if (timer >= tickRate)
         {
-            //Vector3 newPosition = new Vector3(pos.x, pos.y, transform.position.z);
-            transform.position = pos;
-            currentPositionIndex = posIndex;
-            timer = 0;
+            if (ID.objectID == eventObjectID)
+            {
+                //Vector3 newPosition = new Vector3(pos.x, pos.y, transform.position.z);
+                transform.position = pos;
+                currentPositionIndex = posIndex;
+                timer = 0;
+            }
         }
         
     }
-
+    private void OnDestroy()
+    {
+        instance.UpdateNetworkEvent -= UpdateMovement;
+    }
     void SendPacket()
     {
         if (instance != null)

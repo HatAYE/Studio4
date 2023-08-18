@@ -11,17 +11,18 @@ public class BagReset : MonoBehaviour
     BagMovement bagMovement;
     ObjectID ID;
     bool sendPacket;
+    const float tickRate = (1000.0f / 15.0f) / 1000.0f;
+    float timer;
+
+    [SerializeField] float timerToRespawn;
+    float maxTimerToRespawn=2;
     void Start()
     {
         bagMovement = GetComponent<BagMovement>();
         ID=GetComponent<ObjectID>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log("position index:" + bagMovement.currentPositionIndex);
-
         StartCoroutine(ActivateReset());
         if (sendPacket)
         {
@@ -29,7 +30,6 @@ public class BagReset : MonoBehaviour
             byte[] packetData = resetPacket.Serialize();
             //Client.instance.Send(packetData);
             sendPacket = false;
-            Debug.Log("wewoo");
         }
     }
     IEnumerator ActivateReset()
@@ -43,16 +43,27 @@ public class BagReset : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == resetPoint.gameObject)
+        if (other.gameObject == resetPoint)
         {
-            transform.position = startPoint.transform.position;
-            bagMovement.currentPositionIndex = 0;
-            DestroyGameobjects(transform);
-            sendPacket= true;
+            timer += Time.deltaTime;
+
+            if (timer >= tickRate)
+            {
+                StartCoroutine(DestroyGameobjects(transform));
+                timer = 0;
+            }
+            timerToRespawn += Time.deltaTime;
+            if (timerToRespawn>= maxTimerToRespawn)
+            {
+                
+                timerToRespawn = 0;
+            }
+            
+            //sendPacket= true;
         }
     }
 
-    void DestroyGameobjects(Transform parent)
+    IEnumerator DestroyGameobjects(Transform parent)
     {
         for (int i = 0; i < objectRandomizer.Count; i++)
         {
@@ -64,10 +75,13 @@ public class BagReset : MonoBehaviour
                 if (objectID != null)
                 {
                     Client.instance.DestroyLocally(objectID.objectID);
-                    //Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
+                    Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
         }
+        bagMovement.currentPositionIndex = 0;
+        parent.position = startPoint.transform.position;
     }
 }
 

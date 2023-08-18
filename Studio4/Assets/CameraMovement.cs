@@ -9,11 +9,11 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] GameObject[] cameraPositions;
     [SerializeField] int speed;
-    IEnumerator MoveCam(Vector2 targetPosition)
+    IEnumerator MoveCam(Vector3 targetPosition)
     {
-        while (Vector2.Distance(transform.position, targetPosition) > 0.01f)
+        while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             yield return null;
         }
 

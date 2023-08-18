@@ -19,10 +19,6 @@ public class ObjectRandomizer : MonoBehaviour
     }
     private void Update()
     {
-        /*if (bagmovement.currentPositionIndex == 0 && !gotInstantiated)
-        {
-        }
-        else gotInstantiated = false;*/
         gotInstantiated = false;
     }
 
