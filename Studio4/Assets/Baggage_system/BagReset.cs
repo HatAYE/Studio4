@@ -10,28 +10,27 @@ public class BagReset : MonoBehaviour
     [SerializeField] GameObject startPoint;
     BagMovement bagMovement;
     ObjectID ID;
-    bool sendPacket;
     const float tickRate = (1000.0f / 15.0f) / 1000.0f;
     float timer;
-
-    [SerializeField] float timerToRespawn;
-    float maxTimerToRespawn=2;
+    bool canReInstantiate;
     void Start()
     {
         bagMovement = GetComponent<BagMovement>();
         ID=GetComponent<ObjectID>();
+        
     }
     void Update()
     {
         StartCoroutine(ActivateReset());
-        if (sendPacket)
+        if (canReInstantiate)
         {
-            ResetPacket resetPacket = new ResetPacket(Client.instance.playerData, ID.objectID);
-            byte[] packetData = resetPacket.Serialize();
-            //Client.instance.Send(packetData);
-            sendPacket = false;
+            StartCoroutine(RequestInstantation());
+            canReInstantiate = false;
         }
+        
     }
+
+    
     IEnumerator ActivateReset()
     {
         if (bagMovement.currentPositionIndex >= bagMovement.bagPositions.Count)
@@ -52,17 +51,14 @@ public class BagReset : MonoBehaviour
                 StartCoroutine(DestroyGameobjects(transform));
                 timer = 0;
             }
-            timerToRespawn += Time.deltaTime;
-            if (timerToRespawn>= maxTimerToRespawn)
-            {
-                
-                timerToRespawn = 0;
-            }
             
-            //sendPacket= true;
         }
     }
-
+    IEnumerator RequestInstantation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Client.instance.Send(new byte[] { 255 });
+    }
     IEnumerator DestroyGameobjects(Transform parent)
     {
         for (int i = 0; i < objectRandomizer.Count; i++)
@@ -80,6 +76,8 @@ public class BagReset : MonoBehaviour
                 }
             }
         }
+        canReInstantiate = true;
+        yield return new WaitForSeconds(1);
         bagMovement.currentPositionIndex = 0;
         parent.position = startPoint.transform.position;
     }

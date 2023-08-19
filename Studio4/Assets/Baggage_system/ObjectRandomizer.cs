@@ -25,17 +25,20 @@ public class ObjectRandomizer : MonoBehaviour
     public void InstantiateItems(int prefabIndexes, string objectID)
     {
         GameObject prefabToInstantiate = Resources.Load<GameObject>(bagObjects[prefabIndexes]);
-        GameObject instantiatedObject = Instantiate(prefabToInstantiate, new Vector3(transform.position.x, transform.position.y, ZAxis), Quaternion.identity);
-
-        ObjectID objectIDComponent = instantiatedObject.GetComponent<ObjectID>();
-        if (objectIDComponent != null)
+        if (transform.childCount == 0)
         {
-            objectIDComponent.ownerID = Client.instance.playerData.playerID;
-            objectIDComponent.objectID = objectID;
+            GameObject instantiatedObject = Instantiate(prefabToInstantiate, new Vector3(transform.position.x, transform.position.y, ZAxis), Quaternion.identity);
+            ObjectID objectIDComponent = instantiatedObject.GetComponent<ObjectID>();
+            if (objectIDComponent != null)
+            {
+                objectIDComponent.ownerID = Client.instance.playerData.playerID;
+                objectIDComponent.objectID = objectID;
+            }
+
+            instantiatedObject.transform.parent = parentObject.transform;
+            gotInstantiated = true;
         }
 
-        instantiatedObject.transform.parent = parentObject.transform;
-        gotInstantiated = true;
     }
 
 }
