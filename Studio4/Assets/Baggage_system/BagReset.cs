@@ -83,8 +83,8 @@ public class BagReset : MonoBehaviour
         }
         canReInstantiate = true;
         yield return new WaitForSeconds(1);
-        parent.position = startPoint.transform.position;
         bagMovement.currentPositionIndex = 0;
+        parent.position = startPoint.transform.position;
         destroyCoroutineRunning = false;
     }
 }

@@ -31,7 +31,7 @@ public class Client : MonoBehaviour
         string id = Random.Range(0, 100).ToString();
         playerData = new PlayerData(id, $"player{id}");
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        //socket.Connect(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3000));
+        socket.Connect(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3000));
         socket.Blocking = false;
     }
 
