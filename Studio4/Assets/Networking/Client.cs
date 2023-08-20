@@ -69,7 +69,7 @@ public class Client : MonoBehaviour
                 else if (basePacket.packType == BasePacket.PackType.movement)
                 {
                     MovementPacket mp = new MovementPacket().Deserialize(buffer);
-                    foreach(ObjectID id in FindObjectsOfType<ObjectID>())
+                    foreach (ObjectID id in FindObjectsOfType<ObjectID>())
                     {
                         if (id.objectID== mp.GameObjectID)
                         {

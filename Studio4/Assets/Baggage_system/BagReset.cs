@@ -13,6 +13,7 @@ public class BagReset : MonoBehaviour
     const float tickRate = (1000.0f / 15.0f) / 1000.0f;
     float timer;
     bool canReInstantiate;
+    bool destroyCoroutineRunning = false;
     void Start()
     {
         bagMovement = GetComponent<BagMovement>();
@@ -24,7 +25,7 @@ public class BagReset : MonoBehaviour
         StartCoroutine(ActivateReset());
         if (canReInstantiate)
         {
-            StartCoroutine(RequestInstantation());
+            Client.instance.Send(new byte[] { 255 });
             canReInstantiate = false;
         }
         
@@ -44,23 +45,27 @@ public class BagReset : MonoBehaviour
     {
         if (other.gameObject == resetPoint)
         {
-            timer += Time.deltaTime;
+            /*timer += Time.deltaTime;
 
             if (timer >= tickRate)
+            {*/
+            if (!destroyCoroutineRunning) 
             {
                 StartCoroutine(DestroyGameobjects(transform));
-                timer = 0;
             }
-            
+            /*timer = 0;
+        }*/
+
         }
     }
     IEnumerator RequestInstantation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         Client.instance.Send(new byte[] { 255 });
     }
     IEnumerator DestroyGameobjects(Transform parent)
     {
+        destroyCoroutineRunning = true;
         for (int i = 0; i < objectRandomizer.Count; i++)
         {
             Transform bagObject = objectRandomizer[i].transform;
@@ -72,14 +77,15 @@ public class BagReset : MonoBehaviour
                 {
                     Client.instance.DestroyLocally(objectID.objectID);
                     Client.instance.Send(new DestroyPacket (Client.instance.playerData, objectID.objectID).Serialize());
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.35f);
                 }
             }
         }
         canReInstantiate = true;
         yield return new WaitForSeconds(1);
-        bagMovement.currentPositionIndex = 0;
         parent.position = startPoint.transform.position;
+        bagMovement.currentPositionIndex = 0;
+        destroyCoroutineRunning = false;
     }
 }
 
